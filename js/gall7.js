@@ -153,7 +153,7 @@
       this.isActive = true
       d.documentElement.style.overflow = 'hidden'// this stops from scroll when tab pressed and hides scrollbar
       this.imag.className = ''
-      this.imag.focus()
+      this.irig.focus()
     }
 
     this.leftRigthBtnsShow()
