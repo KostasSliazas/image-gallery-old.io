@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Image gallery</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Image gallery &mdash; vanilla JavaScript and CSS">
+  <meta property="og:url" content="https://kostassliazas.github.io/image-gallery.io/">
+  <meta property="og:type" content="Image gallery">
+  <meta property="og:title" content="Image gallery">
+  <meta property="og:description" content="Image gallery JavaScript + CSS">
+  <meta property="og:image" content="https://kostassliazas.github.io/image-gallery.io/photos/image1.jpg">
+  <link rel="canonical" href="https://kostassliazas.github.io/image-gallery.io/">
+  <link rel="preload" href="css/listimg.min.css" as="style">
+  <link rel="preload" href="css/style-page.min.css" as="style">
+  <link rel="preload" href="css/gall7.min.css" as="style">
+  <link rel="preload" href="js/gall7.min.js" as="script">
+  <link rel="stylesheet" href="css/listimg.min.css">
+  <link rel="stylesheet" href="css/gall7.min.css">
+  <link rel="stylesheet" href="css/style-page.min.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1>Image gallery JavaScript + CSS (responsive)</h1>
+      <div class="inside">
+        <a href="https://kostassliazas.github.io/svg-examples/" target="_blank" rel="noopener noreferrer">DEMO</a>
+        <a id="download" href="https://github.com/KostasSliazas/image-gallery.io/archive/refs/tags/7.zip" target="_blank" rel="noopener noreferrer">DOWNLOAD</a>
+        <a href="https://github.com/KostasSliazas/image-gallery.io" target="_blank" rel="noopener noreferrer">https://github.com/KostasSliazas/image-gallery.io</a>
+      </div>
+    </header>
+    <div class="wrap">
+      <div>
+        <div class="code">
+          <p class="code__p noselect"><i class="code__i--el">&lt;</i>!--Copy/Paste(ctrl+a/ctrl+c/ctrl+v)to<i class="code__i--el">&lt;</i>head<i class="code__i--el">&gt;</i>tag--<i class="code__i--el">&gt;</i></p>
+          <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">link</i> <i class="code__i--re">rel</i><i class="code__i--el">=</i><i class="code__i--st">"stylesheet"</i> <i class="code__i--re">href</i><i class="code__i--el">=</i>"css/listimg.min.css"<i class="code__i--el">&gt;</i><span class="noselect"><i class="code__i--el">&lt;</i>!--CSSimageList(optional)--<i class="code__i--el">&gt;</i></span><br></p>
+          <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">link</i> <i class="code__i--re">rel</i><i class="code__i--el">=</i><i class="code__i--st">"stylesheet"</i> <i class="code__i--re">href</i><i class="code__i--el">=</i>"css/gall7.min.css"<i class="code__i--el">&gt;</i><span class="noselect"><i class="code__i--el">&lt;</i>!--GalleryCSS--<i class="code__i--el">&gt;</i></span><br></p>
+          <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">script</i><i class="code__i--re"> defer </i><i class="code__i--re">src</i><i class="code__i--el">=</i>"js/gall7.min.js"<i class="code__i--el">&gt;</i><i class="code__i--el">&lt;</i>/<i class="code__i--sc">script</i><i class="code__i--el">&gt;</i><span class="noselect"><i class="code__i--el">&lt;</i>!--GalleryJavaScript--<i class="code__i--el">&gt;</i></span></p>
+        </div>
+      </div>
+      <div>
+        <div class="code">
+          <p class="code__p noselect"><i class="code__i--el">&lt;</i>!-- optional configuration --<i class="code__i--el">&gt;</i></p>
+          <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">script</i><i class="code__i--el">&gt;</i></p>
+          <p class="code__p"><i class="code__i--co">//with these defaults (optional)</i></p>
+          <p class="code__p">IGConfig <i class="code__i--el">=</i> {</p>
+          <p class="code__p">delaySeconds<i class="code__i--el">:</i> 2<i class="code__i--el">,</i></p>
+          <p class="code__p">showButtons<i class="code__i--el">:</i> true<i class="code__i--el">,</i></p>
+          <p class="code__p">showButtonsOnPlay<i class="code__i--el">:</i> true<i class="code__i--el">,</i></p>
+          <p class="code__p">imageContainer<i class="code__i--el">:</i> 'images-container'<i class="code__i--el">,</i></p>
+          <p class="code__p">folder<i class="code__i--el">:</i> 'big/', <i class="code__i--co">// string + "/" === folder</i></p>
+          <p class="code__p">}</p>
+          <p class="code__p"><i class="code__i--el">&lt;</i>/<i class="code__i--sc">script</i><i class="code__i--el">&gt;</i></p>
+        </div>
+      </div>
+    </div>
+    <div class="images-container">
+      <ul>
+        <li><img src="photos/image1.jpg" loading="lazy" alt="image gallery2"></li>
+        <li><img src="photos/image2.jpg" loading="lazy" alt="image gallery2"></li>
+        <li><img src="photos/image3.jpg" loading="lazy" alt="image gallery3"></li>
+        <li><img src="photos/image4.jpg" loading="lazy" alt="image gallery4"></li>
+        <li><img src="photos/image5.jpg" loading="lazy" alt="image gallery5"></li>
+        <li><img src="photos/image6.jpg" loading="lazy" alt="image gallery6"></li>
+        <li><img src="photos/image7.jpg" loading="lazy" alt="image gallery7"></li>
+      </ul>
+    </div>
+  </main>
+  <footer>
+    <div class="addthis_inline_share_toolbox"></div>
+    <p>Image gallery with autoplay and download buttons, without external libraries just plain JavaScript (vanilla).</p>
+    <p>minified JS<i class="code__i--re">(</i> 5.2 KB<i class="code__i--re">)</i> + CSS file<i class="code__i--re">(</i> 3.65 KB<i class="code__i--re">)</i> + (Optional)list CSS<i class="code__i--re">(</i> 0.421 KB<i class="code__i--re">)</i> <i class="code__i--re">=</i> ~10 KB</p>
+    <p>by Kostas Šliažas</p>
+    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+  </footer>
+  <script defer src="js/gall7.min.js"></script>
+  <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60f7f63572b6f058"></script>
+</body>
+
+</html>
