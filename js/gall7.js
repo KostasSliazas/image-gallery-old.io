@@ -225,13 +225,14 @@
   }, false)
 
   // add keyup addEventListener to image div (gallery window)
-  IG.imag.addEventListener('keyup', function (e) {
+  w.addEventListener('keyup', function (e) {
     const key = e.key
     if (!IG.isActive || e.isComposing || key === 229) return
     key === 'ArrowLeft' && IG.clear().lefts().show()
     key === 'ArrowRight' && IG.clear().right().show()
     key === 'Escape' && IG.close()
     key === ' ' && IG.autoPlay()
+    e.preventDefault()
     e.stopImmediatePropagation()
   }, false)
   // everything to handle swipe left/right
