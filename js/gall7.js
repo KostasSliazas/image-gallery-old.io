@@ -8,11 +8,11 @@
   IG.showButtonsOnPlay = typeof getConfig['showButtonsOnPlay'] === 'undefined' ? true : !!getConfig['showButtonsOnPlay']
   IG.showButtons = typeof getConfig['showButtons'] === 'undefined' ? true : !!getConfig['showButtons']
   IG.containersArray = []// elements containers array
-  IG.imagesArray = []// all elements array
-  IG.container = null// initialize container with null value
-  IG.indexOfImage = 0
-  IG.isActive = false
+  IG.imagesArray = []
+  IG.container = []
   IG.isAutoPlayOn = false
+  IG.isActive = false
+  IG.indexOfImage = 0
   IG.timeOut = 0
   IG.frag = d.createDocumentFragment()// all stuff for creating main gallery window
   IG.clos = d.createElement('button')
