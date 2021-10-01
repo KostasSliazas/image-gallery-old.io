@@ -104,7 +104,9 @@ body {
 #irig7 {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
   pointer-events: none;
   z-index: -1;
 }
@@ -114,6 +116,8 @@ body {
   width: 48px;
   border-radius: 50%;
   border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   background: rgba(0, 0, 0, .2);
 }
@@ -165,12 +169,16 @@ body {
 
 #irig7::after,
 #clos7:before {
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
 }
 
 #ilef7::after,
 #clos7:after {
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
 }
 
 #ilef7::after {
@@ -186,11 +194,15 @@ body {
 }
 
 #left7:hover #ilef7::after {
-  transform: translateX(-2px) rotate(-45deg);
+  -webkit-transform: translateX(-2px) rotate(-45deg);
+     -ms-transform: translateX(-2px) rotate(-45deg);
+         transform: translateX(-2px) rotate(-45deg);
 }
 
 #rigt7:hover #irig7::after {
-  transform: translateX(2px) rotate(45deg);
+  -webkit-transform: translateX(2px) rotate(45deg);
+    -ms-transform: translateX(2px) rotate(45deg);
+        transform: translateX(2px) rotate(45deg);
 }
 
 #clos7::after,
@@ -239,7 +251,9 @@ body {
   max-height: 100%;
   max-width: 100%;
   top: 50%;
-  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
   transition: .2s opacity;
 }
 
@@ -313,7 +327,9 @@ body {
   bottom: 3px;
   height: 12px;
   left: 4px;
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
   width: 12px;
 }
 
@@ -343,7 +359,9 @@ body {
 
 @keyframes load {
   to {
-    transform: rotate(360deg)
+    -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+            transform: rotate(360deg)
   }
 }
 
