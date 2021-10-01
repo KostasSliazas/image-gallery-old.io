@@ -224,7 +224,7 @@
     target === 'play7' && IG.autoPlay()
     target === 'clos7' && IG.close()
     e.stopImmediatePropagation()
-  }, false)
+  })
 
   // add keyup addEventListener to image div (gallery window)
   w.addEventListener('keyup', function (e) {
@@ -236,7 +236,7 @@
     key === ' ' && IG.autoPlay()
     e.preventDefault()
     e.stopImmediatePropagation()
-  }, false)
+  })
   // everything to handle swipe left/right
   // https://code-maven.com/swipe-left-right-vanilla-javascript
   const minHorizontalMove = 30
