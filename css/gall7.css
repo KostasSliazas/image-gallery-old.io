@@ -39,7 +39,7 @@ body {
 #onow7,
 #foot7 {
   bottom: 24px;
-  z-index: 4;
+  z-index: 1;
   width: 40%;
   width: calc(50% - 24px);
   overflow: hidden;
@@ -102,7 +102,7 @@ body {
   width: 16%;
   min-width: 72px;
   height: 100%;
-  z-index: 3;
+  z-index: 1;
 }
 
 #ilef7,
@@ -147,7 +147,7 @@ body {
 
 #clos7 {
   top: 24px;
-  z-index: 7;
+  /* z-index: 7; */
 }
 
 #ilef7::after,
@@ -219,7 +219,7 @@ body {
   position: absolute;
   top: 10px;
   width: 0;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 #head7,
@@ -236,7 +236,7 @@ body {
 
 #head7 {
   height: 72px;
-  z-index: 4;
+  z-index: 2;
 }
 
 #insi7 {
