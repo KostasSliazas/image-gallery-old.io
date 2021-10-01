@@ -226,7 +226,6 @@ body {
 #cent7 {
   top: 0;
   width: 100%;
-  overscroll-behavior: contain;
   overflow: hidden;
   left: 0;
 }
@@ -345,6 +344,7 @@ body {
 }
 
 .spin7::after {
+  -webkit-animation: load .3s linear infinite;
   animation: load .3s linear infinite;
   border-radius: 50%;
   border: 2px solid #bbb;
@@ -366,7 +366,13 @@ body {
             transform: rotate(360deg)
   }
 }
-
+@-webkit-keyframes load {
+  to {
+    -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+            transform: rotate(360deg)
+  }
+}
 @media screen and (max-width: 575.98px) {
   #insi7 {
     max-width: 100%;
