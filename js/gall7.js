@@ -8,7 +8,7 @@
   IG.showButtonsOnPlay = typeof getConfig['showButtonsOnPlay'] === 'undefined' ? true : !!getConfig['showButtonsOnPlay']
   IG.showButtons = typeof getConfig['showButtons'] === 'undefined' ? true : !!getConfig['showButtons']
   IG.containersArray = []// elements containers array
-  IG.imagesArray = []
+  IG.imagesArray = []// all elements array
   IG.container = []
   IG.isAutoPlayOn = false
   IG.isActive = false
@@ -38,7 +38,7 @@
   IG.ilef.setAttribute('aria-label', 'Previous')
   IG.clos.setAttribute('aria-label', 'Close')
   IG.clos.setAttribute('title', 'Press Esc to close')
-  IG.imag.setAttribute('tabindex', '-1')
+  // IG.imag.setAttribute('tabindex', '-1')
   IG.imag.className = 'hide7'
 
   // show download and autoplay buttons if (true = default)
@@ -174,7 +174,7 @@
     this.loaded.call(this.imgs)
   }
 
-  // assign container elements or BODY (default = BODY)
+  // assign container elements with custom or (default = images-container) class or BODY (default = BODY)
   IG.container = d.getElementsByClassName(IG.imageContainer).length > 0
     ? d.getElementsByClassName(IG.imageContainer)
     : d.getElementsByTagName('body')
