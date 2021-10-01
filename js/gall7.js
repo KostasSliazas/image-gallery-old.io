@@ -82,7 +82,7 @@
         this.left.className = this.rigt.className = this.clos.className = 'hide7'
         if (this.showButtons) this.foot.className = this.onow.className = 'hide7'
       }
-      if (this.indexOfImage === this.imagesArray.length - 1) this.clear()
+      this.indexOfImage === this.imagesArray.length - 1 && this.clear()
     }.bind(this), this.timer)
   }
 
