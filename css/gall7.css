@@ -94,7 +94,7 @@ body {
 #imag7 button:active,
 #left7:active #ilef7,
 #rigt7:active #irig7 {
-  opacity: .3;
+  opacity: .3
 }
 
 #left7,
@@ -344,8 +344,8 @@ body {
 }
 
 .spin7::after {
-  -webkit-animation: load .3s linear infinite;
-  animation: load .3s linear infinite;
+  -webkit-animation: loa .3s linear infinite;
+  animation: loa .3s linear infinite;
   border-radius: 50%;
   border: 2px solid #bbb;
   border-bottom: 2px solid transparent;
@@ -359,14 +359,14 @@ body {
   z-index: 2;
 }
 
-@keyframes load {
+@keyframes loa {
   to {
     -webkit-transform: rotate(360deg);
         -ms-transform: rotate(360deg);
             transform: rotate(360deg)
   }
 }
-@-webkit-keyframes load {
+@-webkit-keyframes loa {
   to {
     -webkit-transform: rotate(360deg);
         -ms-transform: rotate(360deg);
