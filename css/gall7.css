@@ -343,7 +343,6 @@ body {
 }
 
 .spin7::after {
-  -webkit-animation: load .3s linear infinite;
   animation: load .3s linear infinite;
   border-radius: 50%;
   border: 2px solid #bbb;
