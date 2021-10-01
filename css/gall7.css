@@ -52,6 +52,11 @@ body {
   text-overflow: ellipsis;
 }
 
+#down7,
+#ilef7,
+#irig7,
+#head7,
+#cent7
 #foot7,
 #clos7,
 #play7,
@@ -102,7 +107,6 @@ body {
 
 #ilef7,
 #irig7 {
-  position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
@@ -220,7 +224,6 @@ body {
 
 #head7,
 #cent7 {
-  position: absolute;
   top: 0;
   width: 100%;
   overscroll-behavior: contain;
@@ -275,7 +278,6 @@ body {
   box-sizing: border-box;
   height: 6px;
   pointer-events: none;
-  position: absolute;
   width: 24px;
   border-top: 0;
   left: 12px;
