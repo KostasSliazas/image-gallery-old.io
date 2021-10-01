@@ -99,8 +99,8 @@
     this.timeOut = 0
     this.isAutoPlayOn = false
     if (this.showButtons) this.play.className = ''
-    if (!this.showButtonsOnPlay) this.clos.className = ''
     if (this.showButtons) this.foot.className = this.onow.className = ''
+    if (!this.showButtonsOnPlay) this.clos.className = ''
     this.leftRigthBtnsShow()
     return this
   }
@@ -122,6 +122,7 @@
   IG.lefts = function () {
     if (this.indexOfImage > 0) this.indexOfImage--
     else this.indexOfImage = this.imagesArray.length - 1
+    this.ilef.focus()
     return this
   }
 
@@ -129,6 +130,7 @@
   IG.right = function () {
     if (this.indexOfImage < this.imagesArray.length - 1) this.indexOfImage++
     else this.indexOfImage = 0
+    this.irig.focus()
     return this
   }
 
