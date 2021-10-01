@@ -111,7 +111,7 @@ body {
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
-  pointer-events: none;
+  /* pointer-events: none; */
   z-index: -1;
 }
 
