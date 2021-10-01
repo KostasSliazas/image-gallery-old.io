@@ -344,8 +344,8 @@ body {
 }
 
 .spin7::after {
-  -webkit-animation: loa .3s linear infinite;
-  animation: loa .3s linear infinite;
+  -webkit-animation: lo .3s linear infinite;
+  animation: lo .3s linear infinite;
   border-radius: 50%;
   border: 2px solid #bbb;
   border-bottom: 2px solid transparent;
@@ -359,14 +359,14 @@ body {
   z-index: 2;
 }
 
-@keyframes loa {
+@keyframes lo {
   to {
     -webkit-transform: rotate(360deg);
         -ms-transform: rotate(360deg);
             transform: rotate(360deg)
   }
 }
-@-webkit-keyframes loa {
+@-webkit-keyframes lo {
   to {
     -webkit-transform: rotate(360deg);
         -ms-transform: rotate(360deg);
