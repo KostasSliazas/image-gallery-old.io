@@ -75,12 +75,27 @@
   <footer>
     <div class="addthis_inline_share_toolbox"></div>
     <h1>Image gallery with autoplay and download buttons, without external libraries just plain JavaScript (vanilla).</h1>
-    <p>minified JS<i class="code__i--re">(</i> 5.2 KB<i class="code__i--re">)</i> + CSS file<i class="code__i--re">(</i> 4.3 KB<i class="code__i--re">)</i> + (Optional)list CSS<i class="code__i--re">(</i> 0.421 KB<i class="code__i--re">)</i> <i class="code__i--re">=</i> ~10 KB</p>
+    <p>minified JS<i class="code__i--re">(</i> 5.2 KB<i class="code__i--re">)</i> + CSS file<i class="code__i--re">(</i> 4.21 KB<i class="code__i--re">)</i> + (Optional)list CSS<i class="code__i--re">(</i> 0.421 KB<i class="code__i--re">)</i> <i class="code__i--re">=</i> ~10 KB</p>
     <p>by Kostas Šliažas</p>
     <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
   </footer>
   <script defer src="js/gall7.min.js"></script>
   <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60f7f63572b6f058"></script>
+  <script>
+    IGConfig = {
+
+      delaySeconds: 2,
+
+      showButtons: true,
+
+      showButtonsOnPlay: false,
+
+      imageContainer: 'images-container',
+
+      folder: 'big/', // string + "/" === folder
+
+    }
+  </script>
 </body>
 
 </html>
