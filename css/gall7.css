@@ -20,8 +20,8 @@ body {
   -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
-  min-width: 168px;
-  min-height: 168px;
+  /* min-width: 168px;
+  min-height: 168px; */
   /* outline: 0; */
   /* transition: 0.2s 0.1s transform, visibility 0.1s 0.2s; */
 }
@@ -50,7 +50,7 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+#head7,
 #down7,
 #ilef7,
 #irig7,
