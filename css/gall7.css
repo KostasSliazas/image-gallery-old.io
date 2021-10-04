@@ -19,7 +19,7 @@ body {
 #imag7 {
   background: #000;
   color: #777;
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 12px;
   height: 100%;
   width: 100%;
@@ -43,8 +43,6 @@ body {
   text-indent: 50px;
   bottom: 24px;
   z-index: 1;
-  width: 40%;
-  width: calc(50% - 24px);
   overflow: hidden
 }
 
@@ -54,11 +52,7 @@ body {
   text-overflow: ellipsis
 }
 
-#down7 {
-  position: absolute
-}
-
-#clos7,#foot7,#head7,#ilef7,#irig7,#left7,#onow7,#play7,#rigt7,#wdow7 {
+#down7,#clos7,#foot7,#head7,#ilef7,#irig7,#left7,#onow7,#play7,#rigt7,#wdow7,#cent7 {
   box-sizing: border-box;
   position: absolute
 }
@@ -190,7 +184,6 @@ body {
 #cent7,#head7 {
   top: 0;
   width: 100%;
-  overflow: hidden;
   left: 0
 }
 
