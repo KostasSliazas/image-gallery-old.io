@@ -70,7 +70,7 @@
     else {
       this.isAutoPlayOn = true
       // this.loaded.call(this.imgs)
-      this.imgs.onload = loadComplete.bind(this.imgs)
+      this.imgs.onload = loadComplete.call(this.imgs)
       if (IG.showButtons) this.play.className = 'acts7'
     }
   }
