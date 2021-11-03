@@ -89,8 +89,9 @@
   // image is loaded method
   IG.loaded = function () {
     this.onload = loadComplete.bind(this)
-    const src = this
-    this.src = src.src
+    // sometimes not image src reloaded without this hack
+    // const src = this
+    // this.src = this.src
   }
 
   // clear method to reset all values
@@ -186,8 +187,8 @@
   for (let i = IG.containersArray.length - 1; i >= 0; i--) {
     const img = IG.containersArray[i].getElementsByTagName('img')
     for (let j = 0; j < img.length; j++) {
-      img[j].parentElement.className += ' spin7'
-      IG.loaded.call(img[j])
+      // img[j].parentElement.className += ' spin7'
+      // IG.loaded.call(img[j])
       IG.imagesArray.push(img[j])
     }
   }
