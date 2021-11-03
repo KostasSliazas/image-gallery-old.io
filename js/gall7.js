@@ -69,7 +69,8 @@
     if (this.isAutoPlayOn) this.clear()
     else {
       this.isAutoPlayOn = true
-      this.loaded.call(this.imgs)
+      // this.loaded.call(this.imgs)
+      this.imgs.onload = loadComplete.bind(this.imgs)
       if (IG.showButtons) this.play.className = 'acts7'
     }
   }
@@ -87,12 +88,12 @@
   }
 
   // image is loaded method
-  IG.loaded = function () {
-    this.onload = loadComplete.bind(this)
-    // sometimes not image src reloaded without this hack
-    // const src = this
-    // this.src = this.src
-  }
+  // IG.loaded = function () {
+  //   this.onload = loadComplete.bind(this)
+  //   // sometimes not image src reloaded without this hack
+  //   // const src = this
+  //   // this.src = this.src
+  // }
 
   // clear method to reset all values
   IG.clear = function () {
@@ -174,7 +175,8 @@
     this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.replace(fileName, this.folder + fileName)
     this.insi.appendChild(this.imgs)
     this.insi.className = 'spin7'
-    this.loaded.call(this.imgs)
+    // this.loaded.call(this.imgs)
+    this.imgs.onload = loadComplete.bind(this.imgs)
   }
 
   // assign container elements with custom or (default = images-container) class or BODY (default = BODY)
