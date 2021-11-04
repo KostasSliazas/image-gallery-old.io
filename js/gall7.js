@@ -88,11 +88,11 @@
 
   // image is loaded method
   IG.loaded = function () {
-    this.onload = loadComplete.bind(this)
+    this.onload = loadComplete.call(this)
     // sometimes not image src reloaded without this hack
     // const src = this
     // this.src = this.src
-    return this
+    // return this
   }
 
   // clear method to reset all values
