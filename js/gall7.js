@@ -185,7 +185,6 @@
   for (let l = IG.container.length - 1; l >= 0; l--) IG.containersArray.push(IG.container[l])
 
   // Loop from elements and add to array
-  let array = []
   for (let i = IG.containersArray.length - 1; i >= 0; i--) {
     // console.time("imagesArray");
 
