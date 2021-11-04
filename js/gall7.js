@@ -88,11 +88,10 @@
 
   // image is loaded method
   IG.loaded = function () {
-    this.onload = loadComplete.call(this)
+    this.onload = loadComplete.bind(this)
     // sometimes not image src reloaded without this hack
-    // const src = this
-    // this.src = this.src
-    // return this
+    const src = this
+    this.src = src.src
   }
 
   // clear method to reset all values
@@ -155,7 +154,9 @@
     this.imgs && this.insi.removeChild(this.insi.firstChild)// if image exist remove and later recreate it
     if (!this.isActive) { // don't rewrite values if active and set active gallery
       this.isActive = true
-      d.documentElement.style.overflow = 'hidden'// this stops from scroll when tab pressed and hides scrollbar
+      setTimeout(() => {
+        d.documentElement.style.overflow = 'hidden'// this stops from scroll when tab pressed and hides scrollbar
+      }, 200)
       this.imag.className = ''
       this.irig.focus()
     }
@@ -186,23 +187,12 @@
 
   // Loop from elements and add to array
   for (let i = IG.containersArray.length - 1; i >= 0; i--) {
-    // console.time("imagesArray");
-
-    // const img = IG.containersArray[i].getElementsByTagName('img')
-    // for (let j = 0; j < img.length; j++) {
-    //   // img[j].parentElement.className += ' spin7'
-    //   // IG.loaded.call(img[j])
-    //   IG.imagesArray.push(img[j])
-    // }
-    // console.timeEnd("imagesArray");
-
-    // console.time("imagesArray");
-    [].push.apply(IG.imagesArray, IG.containersArray[i].getElementsByTagName('img'))
-    // IG.imagesArray.forEach(function(e) {
-    //   e.parentElement.className += ' spin7'
-    //   w.setTimeout(function () {IG.loaded.call(e)}.bind(e), 9)
-    // })
-    // console.timeEnd("imagesArray");
+    const img = IG.containersArray[i].getElementsByTagName('img')
+    for (let j = 0; j < img.length; j++) {
+      img[j].parentElement.className += ' spin7'
+      IG.loaded.call(img[j])
+      IG.imagesArray.push(img[j])
+    }
   }
 
   // listen for clicked on image element and load show method
