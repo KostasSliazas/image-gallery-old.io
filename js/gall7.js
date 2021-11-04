@@ -92,6 +92,7 @@
     // sometimes not image src reloaded without this hack
     // const src = this
     // this.src = this.src
+    return this
   }
 
   // clear method to reset all values
@@ -185,12 +186,23 @@
 
   // Loop from elements and add to array
   for (let i = IG.containersArray.length - 1; i >= 0; i--) {
-    const img = IG.containersArray[i].getElementsByTagName('img')
-    for (let j = 0; j < img.length; j++) {
-      // img[j].parentElement.className += ' spin7'
-      // IG.loaded.call(img[j])
-      IG.imagesArray.push(img[j])
-    }
+    // console.time("imagesArray");
+
+    // const img = IG.containersArray[i].getElementsByTagName('img')
+    // for (let j = 0; j < img.length; j++) {
+    //   // img[j].parentElement.className += ' spin7'
+    //   // IG.loaded.call(img[j])
+    //   IG.imagesArray.push(img[j])
+    // }
+    // console.timeEnd("imagesArray");
+
+    // console.time("imagesArray");
+    [].push.apply(IG.imagesArray, IG.containersArray[i].getElementsByTagName('img'))
+    // IG.imagesArray.forEach(function(e) {
+    //   e.parentElement.className += ' spin7'
+    //   w.setTimeout(function () {IG.loaded.call(e)}.bind(e), 9)
+    // })
+    // console.timeEnd("imagesArray");
   }
 
   // listen for clicked on image element and load show method
