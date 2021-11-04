@@ -185,25 +185,23 @@
   for (let l = IG.container.length - 1; l >= 0; l--) IG.containersArray.push(IG.container[l])
 
   // Loop from elements and add to array
+  let array = []
   for (let i = IG.containersArray.length - 1; i >= 0; i--) {
     // console.time("imagesArray");
 
-    // const img = IG.containersArray[i].getElementsByTagName('img')
-    // for (let j = 0; j < img.length; j++) IG.imagesArray.push(img[j])
-    //   // img[j].parentElement.className += ' spin7'
-    //   // IG.loaded.call(img[j])
+    const img = IG.containersArray[i].getElementsByTagName('img')
+    for (let j = 0; j < img.length; j++) IG.imagesArray.push(img[j])
+      // img[j].parentElement.className += ' spin7'
+      // IG.loaded.call(img[j])
     //   IG.imagesArray.push(img[j])
     // }
 
     // console.timeEnd("imagesArray");
-
-    // console.time("imagesArray");
-    [].push.apply(IG.imagesArray, IG.containersArray[i].getElementsByTagName('img'))
+    // [].push.apply(IG.imagesArray, IG.containersArray)
     // IG.imagesArray.forEach(function(e) {
     //   e.parentElement.className += ' spin7'
     //   w.setTimeout(function () {IG.loaded.call(e)}.bind(e), 9)
     // })
-    // console.timeEnd("imagesArray");
   }
 
   // listen for clicked on image element and load show method
