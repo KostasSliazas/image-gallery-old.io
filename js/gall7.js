@@ -90,8 +90,8 @@
   IG.loaded = function () {
     this.onload = loadComplete.bind(this)
     // sometimes not image src reloaded without this hack
-    const src = this
-    this.src = this.src
+    const s = this
+    this.src = s.src
     // return this
   }
 
