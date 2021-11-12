@@ -69,8 +69,8 @@
     if (this.isAutoPlayOn) this.clear()
     else {
       this.isAutoPlayOn = true
-      this.loaded.call(this.imgs)
       if (IG.showButtons) this.play.className = 'acts7'
+      this.loaded.call(this.imgs, this.imgs.src)
     }
   }
 
@@ -87,11 +87,11 @@
   }
 
   // image is loaded method
-  IG.loaded = function () {
+  IG.loaded = function (src) {
     this.onload = loadComplete.bind(this)
+    this.src = src
     // sometimes not image src reloaded without this hack
     // const s = this
-    // this.src = s.src
     // return this
   }
 
@@ -152,7 +152,7 @@
 
   // show image method to show image when loaded
   IG.show = function () {
-    this.imgs && this.insi.removeChild(this.insi.firstChild)// if image exist remove and later recreate it
+    this.insi.className = 'spin7'
     if (!this.isActive) { // don't rewrite values if active and set active gallery
       this.isActive = true
       d.documentElement.style.overflow = 'hidden'// this stops from scroll when tab pressed and hides scrollbar
@@ -168,14 +168,12 @@
       this.alts.innerText = decodeURI(fileName)
       this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.imagesArray.length
     }
-
+    this.imgs && this.insi.removeChild(this.insi.firstChild)// if image exist remove and later recreate it
     this.imgs = d.createElement('img')
     this.imgs.setAttribute('alt', image.getAttribute('alt') || 'No alt attribute')
     this.imgs.onerror = function (e) { e.target.src = image.src }
-    this.loaded.call(this.imgs)
-    this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.replace(fileName, this.folder + fileName)
+    this.loaded.call(this.imgs, image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.replace(fileName, this.folder + fileName))
     this.insi.appendChild(this.imgs)
-    this.insi.className = 'spin7'
   }
 
   // assign container elements with custom or (default = images-container) class or BODY (default = BODY)
