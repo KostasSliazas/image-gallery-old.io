@@ -217,7 +217,7 @@
   // autoplay and image loaded helper to remove class 'loader'
   function loadComplete () {
     if (typeof this !== 'undefined' && this.parentElement) {
-      this.parentElement.className = 'spin7' //this.parentElement.className.replace(new RegExp('(?:^|\\s)' + 'spin7' + '(?!\\S)'), '')
+      this.parentElement.className = '' //this.parentElement.className.replace(new RegExp('(?:^|\\s)' + 'spin7' + '(?!\\S)'), '')
       IG.isAutoPlayOn && IG.autoPlayLoop()
     }
   }
