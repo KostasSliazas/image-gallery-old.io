@@ -91,7 +91,7 @@
     this.onload = loadComplete.bind(this)
     // sometimes not image src reloaded without this hack
     // const s = this
-    // this.src = s.src
+    this.src = this.src
     // return this
   }
 
