@@ -216,10 +216,10 @@
 
   // autoplay and image loaded helper to remove class 'loader'
   function loadComplete () {
-    if (typeof this !== 'undefined' && this.parentElement) {
+    // if (typeof this !== 'undefined' && this.parentElement) {
       this.parentElement.className = '' //this.parentElement.className.replace(new RegExp('(?:^|\\s)' + 'spin7' + '(?!\\S)'), '')
       IG.isAutoPlayOn && IG.autoPlayLoop()
-    }
+    // }
   }
 
   if (IG.containersArray[0] && IG.containersArray[0].tagName === 'BODY') d.body.addEventListener('click', function (e) { IG.listenForIG(e) })
