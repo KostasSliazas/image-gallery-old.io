@@ -91,7 +91,7 @@
     this.onload = loadComplete.bind(this)
     // sometimes not image src reloaded without this hack
     // const s = this
-    this.src = this.src
+    // this.src = s.src
     // return this
   }
 
@@ -172,10 +172,10 @@
     this.imgs = d.createElement('img')
     this.imgs.setAttribute('alt', image.getAttribute('alt') || 'No alt attribute')
     this.imgs.onerror = function (e) { e.target.src = image.src }
+    this.loaded.call(this.imgs)
     this.imgs.src = image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.replace(fileName, this.folder + fileName)
     this.insi.appendChild(this.imgs)
     this.insi.className = 'spin7'
-    this.loaded.call(this.imgs)
   }
 
   // assign container elements with custom or (default = images-container) class or BODY (default = BODY)
