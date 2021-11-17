@@ -1,5 +1,7 @@
 (function (w, d) {
   'use strict'
+  // this is very simple image gallery
+  // Created by Kostas Šliažas
   const getConfig = typeof w['IGConfig'] === 'undefined' || w['IGConfig']// IGConfig variables with defaults for (google closure compile)
   const IG = {}
   IG.folder = getConfig['folder'] || 'big/' // default folder 'big'
@@ -90,9 +92,6 @@
   IG.loaded = function (src) {
     this.onload = loadComplete.bind(this)
     this.src = src
-    // sometimes not image src reloaded without this hack
-    // const s = this
-    // return this
   }
 
   // clear method to reset all values
@@ -184,21 +183,8 @@
 
   // Loop from elements and add to array
   for (let i = IG.containersArray.length - 1; i >= 0; i--) {
-    // console.time("imagesArray");
-
     const img = IG.containersArray[i].getElementsByTagName('img')
     for (let j = 0; j < img.length; j++) IG.imagesArray.push(img[j])
-      // img[j].parentElement.className += ' spin7'
-      // IG.loaded.call(img[j])
-    //   IG.imagesArray.push(img[j])
-    // }
-
-    // console.timeEnd("imagesArray");
-    // [].push.apply(IG.imagesArray, IG.containersArray[i].getElementsByTagName('img'))
-    // IG.imagesArray.forEach(function(e) {
-    //   e.parentElement.className += ' spin7'
-    //   w.setTimeout(function () {IG.loaded.call(e)}.bind(e), 9)
-    // })
   }
 
   // listen for clicked on image element and load show method
@@ -207,7 +193,6 @@
     if (target.tagName === 'IMG') {
       this.indexOfImage = this.imagesArray.indexOf(target) > -1 ? this.imagesArray.indexOf(target) : 0// set image index on click
       this.show()
-      // e.preventDefault()
       e.stopImmediatePropagation()
     }
   }
