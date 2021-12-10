@@ -74,7 +74,7 @@ body {
 
 #left7,#rigt7 {
   width: 16%;
-  min-width: 72px;
+  min-width: 96px;
   height: 100%;
   z-index: 1
 }
