@@ -1,18 +1,20 @@
 @-webkit-keyframes lo {
   to {
-      -webkit-transform: rotate(360deg);
-      transform: rotate(360deg)
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
   }
 }
 
 @keyframes lo {
   to {
-      -webkit-transform: rotate(360deg);
-      transform: rotate(360deg)
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
   }
 }
 
+html,
 body {
+  height: 100%;
   margin: 0
 }
 
@@ -35,11 +37,8 @@ body {
   white-space: nowrap
 }
 
-.hide7 {
-  display: none
-}
-
-#foot7,#onow7 {
+#foot7,
+#onow7 {
   text-indent: 50px;
   bottom: 24px;
   z-index: 1;
@@ -52,41 +51,70 @@ body {
   text-overflow: ellipsis
 }
 
-#down7,#clos7,#foot7,#head7,#ilef7,#irig7,#left7,#onow7,#play7,#rigt7,#wdow7,#cent7 {
+#down7,
+#clos7,
+#foot7,
+#head7,
+#ilef7,
+#irig7,
+#left7,
+#onow7,
+#play7,
+#rigt7,
+#wdow7,
+#cent7 {
   box-sizing: border-box;
   position: absolute
 }
 
-#clos7,#ilef7,#irig7,#play7,#wdow7 {
+#clos7,
+#ilef7,
+#irig7,
+#play7,
+#wdow7 {
   opacity: .7
 }
 
-#clos7:hover,#imag7 button:focus,#left7:hover,#left7:hover #ilef7,#play7.acts7,#play7:hover,#rigt7:hover,#rigt7:hover #irig7,#wdow7:hover {
-  background: rgba(77,77,77,.2);
+#clos7:hover,
+#imag7 button:focus,
+#left7:hover,
+#left7:hover #ilef7,
+#play7.acts7,
+#play7:hover,
+#rigt7:hover,
+#rigt7:hover #irig7,
+#wdow7:hover {
+  background: rgba(77, 77, 77, .2);
   outline: 0;
   opacity: 1;
   cursor: pointer
 }
 
-#imag7 button:active,#left7:active #ilef7,#rigt7:active #irig7 {
+#imag7 button:active,
+#left7:active #ilef7,
+#rigt7:active #irig7 {
   opacity: .3
 }
 
-#left7,#rigt7 {
+#left7,
+#rigt7 {
   width: 16%;
   min-width: 96px;
   height: 100%;
   z-index: 1
 }
 
-#ilef7,#insi7 img,#irig7 {
+#ilef7,
+#insi7 img,
+#irig7 {
   top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%)
 }
 
-#ilef7,#irig7 {
+#ilef7,
+#irig7 {
   z-index: -1
 }
 
@@ -98,18 +126,25 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: rgba(0,0,0,.2)
+  background: rgba(0, 0, 0, .2)
 }
 
-#clos7:after,#imag7,#left7,#rigt7,#wdow7 {
+#clos7:after,
+#imag7,
+#left7,
+#rigt7,
+#wdow7 {
   top: 0
 }
 
-#imag7,#left7,#play7 {
+#imag7,
+#left7,
+#play7 {
   left: 0
 }
 
-#rigt7,#wdow7 {
+#rigt7,
+#wdow7 {
   right: 0
 }
 
@@ -117,7 +152,8 @@ body {
   top: 24px
 }
 
-#ilef7::after,#irig7::after {
+#ilef7::after,
+#irig7::after {
   content: "";
   padding: 9px;
   position: absolute;
@@ -125,22 +161,27 @@ body {
   top: 14px
 }
 
-#clos7,#irig7,#onow7 {
+#clos7,
+#irig7,
+#onow7 {
   right: 24px;
   text-align: right
 }
 
-#foot7,#ilef7 {
+#foot7,
+#ilef7 {
   left: 24px
 }
 
-#clos7:before,#irig7::after {
+#clos7:before,
+#irig7::after {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg)
 }
 
-#clos7:after,#ilef7::after {
+#clos7:after,
+#ilef7::after {
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg)
@@ -170,7 +211,8 @@ body {
   transform: translateX(2px) rotate(45deg)
 }
 
-#clos7::after,#clos7::before {
+#clos7::after,
+#clos7::before {
   border-left: 2px solid #eee;
   content: '';
   display: block;
@@ -181,7 +223,8 @@ body {
   width: 0
 }
 
-#cent7,#head7 {
+#cent7,
+#head7 {
   top: 0;
   width: 100%;
   left: 0
@@ -196,7 +239,8 @@ body {
   z-index: 2
 }
 
-#down7,#insi7 {
+#down7,
+#insi7 {
   pointer-events: none
 }
 
@@ -218,18 +262,15 @@ body {
   background: #fafafa
 }
 
-.spin7 {
-  opacity: .2;
-  filter: grayscale(1)
-}
-
-#play7::before,.spin7::after {
+#play7::before,
+.spin7::after {
   border-radius: 50%;
   height: 24px;
   width: 24px
 }
 
-#down7,#play7::before {
+#down7,
+#play7::before {
   border: 2px solid #eee;
   left: 12px
 }
@@ -237,7 +278,6 @@ body {
 #down7 {
   border-radius: 0 0 2px 2px;
   top: 27px;
-  box-sizing: border-box;
   height: 6px;
   width: 24px;
   border-top: 0
@@ -252,6 +292,15 @@ body {
   border-radius: 4px
 }
 
+.spin7 {
+  opacity: .2;
+  filter: grayscale(1)
+}
+
+.hide7 {
+  display: none
+}
+
 .spin7::after {
   -webkit-animation: lo .3s linear infinite;
   animation: lo .3s linear infinite;
@@ -264,7 +313,11 @@ body {
   z-index: 2
 }
 
-#down7::after,#down7::before,#play7::after,#play7::before,.spin7::after {
+#down7::after,
+#down7::before,
+#play7::after,
+#play7::before,
+.spin7::after {
   box-sizing: border-box;
   content: "";
   display: block;
@@ -308,6 +361,6 @@ body {
 
 @media screen and (max-width:575.98px) {
   #insi7 {
-      max-width: 100%
+    max-width: 100%
   }
 }
