@@ -291,7 +291,7 @@ body {
   border-radius: 4px
 }
 
-.spin7 {
+.spin7 img{
   opacity: .3;
   filter: grayscale(1)
 }
