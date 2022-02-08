@@ -112,6 +112,7 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%)
 }
+
 #down7,
 #insi7,
 #ilef7,
@@ -288,7 +289,7 @@ body {
   border-radius: 4px
 }
 
-.spin7 img{
+.spin7 img {
   opacity: .3;
   filter: grayscale(1)
 }
@@ -300,7 +301,7 @@ body {
 .spin7::after {
   -webkit-animation: lo .3s linear infinite;
   animation: lo .3s linear infinite;
-  border: 2px solid #a7a7a7;
+  border: 2px solid #aaa;
   border-bottom: 2px solid transparent;
   border-top: 2px solid transparent;
   left: 50%;
