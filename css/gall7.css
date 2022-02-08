@@ -204,7 +204,7 @@ body {
   height: 100%;
   margin: 0 auto;
   position: relative;
-  transition: .7s opacity;
+  transition: .2s opacity;
   text-align: center
 }
 
