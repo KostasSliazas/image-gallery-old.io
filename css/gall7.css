@@ -292,6 +292,7 @@ body {
 }
 
 .spin7 {
+  opacity: .3;
   filter: grayscale(1)
 }
 
@@ -302,7 +303,7 @@ body {
 .spin7::after {
   -webkit-animation: lo .3s linear infinite;
   animation: lo .3s linear infinite;
-  border: 2px solid #bbb;
+  border: 2px solid #eee;
   border-bottom: 2px solid transparent;
   border-top: 2px solid transparent;
   left: 50%;
