@@ -1,17 +1,13 @@
 (function (w, d) {
   'use strict'
-  // this is very simple image gallery
-  // Created by Kostas Šliažas
-  const getConfig = typeof w['IGConfig'] === 'undefined' || w['IGConfig']// IGConfig variables with defaults for (google closure compile)
+  const getConfig = typeof w['IGConfig'] === 'undefined' || w['IGConfig'] // eslint-disable-line
   const IG = {}
-  IG.folder = getConfig['folder'] || 'big/' // default folder 'big'
-  IG.imageContainer = getConfig['imageContainer'] || 'images-container'
-  IG.timer = typeof getConfig['delaySeconds'] === 'number' && isFinite(getConfig['delaySeconds']) ? getConfig['delaySeconds'] * 1000 : 2000
-  IG.showButtonsOnPlay = typeof getConfig['showButtonsOnPlay'] === 'undefined' ? true : !!getConfig['showButtonsOnPlay']
-  IG.showButtons = typeof getConfig['showButtons'] === 'undefined' ? true : !!getConfig['showButtons']
-  IG.containersArray = []// elements containers array
+  IG.folder = getConfig['folder'] || 'big/' // eslint-disable-line
+  IG.imageContainer = getConfig['imageContainer'] || 'images-container' // eslint-disable-line
+  IG.timer = typeof getConfig['delaySeconds'] === 'number' && isFinite(getConfig['delaySeconds']) ? getConfig['delaySeconds'] * 1000 : 2000 // eslint-disable-line
+  IG.showButtonsOnPlay = typeof getConfig['showButtonsOnPlay'] === 'undefined' ? true : !!getConfig['showButtonsOnPlay'] // eslint-disable-line
+  IG.showButtons = typeof getConfig['showButtons'] === 'undefined' ? true : !!getConfig['showButtons'] // eslint-disable-line
   IG.imagesArray = []// all elements array
-  IG.container = []
   IG.isAutoPlayOn = false
   IG.isActive = false
   IG.indexOfImage = 0
@@ -26,8 +22,8 @@
   IG.rigt = d.createElement('div')
   IG.head = d.createElement('div')
   IG.insi = d.createElement('div')
-  IG.cent.appendChild(IG.insi)
   IG.cent.appendChild(IG.rigt).appendChild(IG.irig).id = 'irig7'
+  IG.cent.appendChild(IG.insi)
   IG.cent.appendChild(IG.left).appendChild(IG.ilef).id = 'ilef7'
   IG.imag.appendChild(IG.head).appendChild(IG.clos).id = 'clos7'
   IG.imag.appendChild(IG.cent).id = 'cent7'
@@ -72,7 +68,7 @@
     else {
       this.isAutoPlayOn = true
       if (IG.showButtons) this.play.className = 'acts7'
-      this.loaded.call(this.imgs, this.imgs.src)
+      this.loaded(this.imgs, this.imgs.src)
     }
   }
 
@@ -88,10 +84,18 @@
     }.bind(this), this.timer)
   }
 
+  // autoplay and image loaded helper to remove class 'loader'
+  IG.loadComplete = function (e) {
+    // if (typeof this !== 'undefined' && this.parentElement) {
+    e.parentElement.className = '' // this.parentElement.className.replace(new RegExp('(?:^|\\s)' + 'spin7' + '(?!\\S)'), '')
+    this.isAutoPlayOn && this.autoPlayLoop()
+    // }
+  }
+
   // image is loaded method
-  IG.loaded = function (src) {
-    this.onload = loadComplete.bind(this)
-    this.src = src
+  IG.loaded = function (e, src) {
+    e.onload = this.loadComplete.bind(this, e)
+    e.src = src
   }
 
   // clear method to reset all values
@@ -99,8 +103,7 @@
     clearTimeout(this.timeOut)
     this.timeOut = 0
     this.isAutoPlayOn = false
-    if (this.showButtons) this.play.className = ''
-    if (this.showButtons) this.foot.className = this.onow.className = ''
+    if (this.showButtons) this.foot.className = this.onow.className = this.play.className = ''
     if (!this.showButtonsOnPlay) this.clos.className = ''
     this.leftRigthBtnsShow()
     return this
@@ -111,7 +114,7 @@
     const a = d.createElement('a')// create link
     const fileName = this.imgs.src.split('/').pop()// add class active for button animation
     this.onow.dataset.selected = fileName
-    a.setAttribute('rel', 'noopener noreferrer')
+    a.setAttribute('rel', 'noreferrer')
     a.setAttribute('download', fileName)
     a.href = this.imgs.src
     a.target = '_blank'
@@ -171,20 +174,8 @@
     this.imgs = d.createElement('img')
     this.imgs.setAttribute('alt', image.getAttribute('alt') || 'No alt attribute')
     this.imgs.onerror = function (e) { e.target.src = image.src }
-    this.loaded.call(this.imgs, image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.replace(fileName, this.folder + fileName))
+    this.loaded(this.imgs, image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.replace(fileName, this.folder + fileName))
     this.insi.appendChild(this.imgs)
-  }
-
-  // assign container elements with custom or (default = images-container) class or BODY (default = BODY)
-  IG.container = d.getElementsByClassName(IG.imageContainer).length > 0
-    ? d.getElementsByClassName(IG.imageContainer)
-    : d.getElementsByTagName('body')
-  for (let l = IG.container.length - 1; l >= 0; l--) IG.containersArray.push(IG.container[l])
-
-  // Loop from elements and add to array
-  for (let i = IG.containersArray.length - 1; i >= 0; i--) {
-    const img = IG.containersArray[i].getElementsByTagName('img')
-    for (let j = 0; j < img.length; j++) IG.imagesArray.push(img[j])
   }
 
   // listen for clicked on image element and load show method
@@ -197,16 +188,22 @@
     }
   }
 
-  // autoplay and image loaded helper to remove class 'loader'
-  function loadComplete () {
-    // if (typeof this !== 'undefined' && this.parentElement) {
-      this.parentElement.className = '' //this.parentElement.className.replace(new RegExp('(?:^|\\s)' + 'spin7' + '(?!\\S)'), '')
-      IG.isAutoPlayOn && IG.autoPlayLoop()
-    // }
+  // assign container elements with custom or (default = images-container) class or BODY (default = BODY)
+  const container = d.getElementsByClassName(IG.imageContainer).length > 0
+    ? d.getElementsByClassName(IG.imageContainer)
+    : d.getElementsByTagName('body')
+
+  const containersArray = []
+  for (let l = container.length - 1; l >= 0; l--) containersArray.push(container[l])
+
+  // Loop from elements and add to array
+  for (let i = containersArray.length - 1; i >= 0; i--) {
+    const img = containersArray[i].getElementsByTagName('img')
+    for (let j = 0; j < img.length; j++) IG.imagesArray.push(img[j])
   }
 
-  if (IG.containersArray[0] && IG.containersArray[0].tagName === 'BODY') d.body.addEventListener('click', function (e) { IG.listenForIG(e) })
-  else for (let k = IG.containersArray.length - 1; k >= 0; k--) IG.containersArray[k].addEventListener('click', function (e) { IG.listenForIG(e) })
+  if (containersArray[0] && containersArray[0].tagName === 'BODY') d.body.addEventListener('click', function (e) { IG.listenForIG(e) })
+  else for (let k = containersArray.length - 1; k >= 0; k--) containersArray[k].addEventListener('click', function (e) { IG.listenForIG(e) })
 
   // add click addEventListener to image div (gallery window)
   IG.imag.addEventListener('click', function (e) {
