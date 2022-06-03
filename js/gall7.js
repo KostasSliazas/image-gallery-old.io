@@ -1,5 +1,9 @@
 (function (w, d) {
   'use strict'
+  const resource = document.createElement('link')
+  resource.setAttribute('rel', 'stylesheet')
+  resource.setAttribute('href', 'css/gall7.min.css')
+  document.getElementsByTagName('head')[0].appendChild(resource)
   const getConfig = typeof w['IGConfig'] === 'undefined' || w['IGConfig'] // eslint-disable-line
   const IG = {}
   IG.folder = getConfig['folder'] || 'big/' // eslint-disable-line
