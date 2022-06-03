@@ -45,7 +45,6 @@ body {
 #onow7 {
   text-indent: 50px;
   bottom: 24px;
-  z-index: 1;
   overflow: hidden
 }
 
@@ -102,7 +101,6 @@ body {
   width: 16%;
   min-width: 96px;
   height: 100%;
-  z-index: 1
 }
 
 #ilef7,
@@ -130,7 +128,8 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: rgba(0, 0, 0, .2)
+  background: rgba(0, 0, 0, .2);
+  z-index: 1;
 }
 
 #clos7:after,
@@ -236,7 +235,6 @@ body {
 
 #head7 {
   height: 72px;
-  z-index: 2
 }
 
 #cent7,
@@ -277,7 +275,7 @@ body {
   left: 50%;
   margin: -12px 0 0 -12px;
   top: 50%;
-  z-index: 2
+  z-index: 1
 }
 
 #down7,
