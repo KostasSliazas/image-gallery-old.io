@@ -20,11 +20,15 @@ h2,
 h3,
 p,
 span {
-  margin: 0;
+  margin: 0 1em;
   line-height: 1.5;
   position: relative;
   font-size: 16px;
   padding: 0
+}
+
+p:last-child {
+  text-align: right;
 }
 
 h1 {
@@ -183,8 +187,7 @@ main {
 }
 
 footer p {
-  padding: 1em;
-  color:#4d4d4d;
+  color: #4d4d4d;
 }
 
 .inside>div {
