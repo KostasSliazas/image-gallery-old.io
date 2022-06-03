@@ -27,7 +27,7 @@ span {
   padding: 0
 }
 
-p:last-child {
+.images-container p:last-of-type {
   text-align: right;
 }
 
