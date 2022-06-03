@@ -32,9 +32,9 @@
   IG.insi.id = 'insi7'
   IG.left.id = 'left7'
   IG.head.id = 'head7'
-  IG.irig.setAttribute('aria-label', 'Next')
-  IG.ilef.setAttribute('aria-label', 'Previous')
-  IG.clos.setAttribute('aria-label', 'Close')
+  // IG.irig.setAttribute('aria-label', 'Next')
+  // IG.ilef.setAttribute('aria-label', 'Previous')
+  // IG.clos.setAttribute('aria-label', 'Close')
   IG.clos.setAttribute('title', 'Press Esc to close')
   // IG.imag.setAttribute('tabindex', '-1')
   IG.imag.className = 'hide7'
@@ -43,8 +43,8 @@
   if (IG.showButtons) {
     IG.wdow = d.createElement('button')
     IG.play = d.createElement('button')
-    IG.wdow.setAttribute('aria-label', 'Download')
-    IG.play.setAttribute('aria-label', 'Play')
+    // IG.wdow.setAttribute('aria-label', 'Download')
+    // IG.play.setAttribute('aria-label', 'Play')
     IG.foot = d.createElement('div')
     IG.alts = d.createElement('div')
     IG.onow = d.createElement('div')
