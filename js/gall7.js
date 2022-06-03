@@ -24,18 +24,16 @@
   IG.cent = d.createElement('div')
   IG.left = d.createElement('div')
   IG.rigt = d.createElement('div')
-  IG.head = d.createElement('div')
   IG.insi = d.createElement('div')
   IG.cent.appendChild(IG.rigt).appendChild(IG.irig).id = 'irig7'
   IG.cent.appendChild(IG.insi)
   IG.cent.appendChild(IG.left).appendChild(IG.ilef).id = 'ilef7'
-  IG.imag.appendChild(IG.head).appendChild(IG.clos).id = 'clos7'
+  IG.cent.appendChild(IG.clos).id = 'clos7'
   IG.imag.appendChild(IG.cent).id = 'cent7'
   IG.frag.appendChild(IG.imag).id = 'imag7'
   IG.rigt.id = 'rigt7'
   IG.insi.id = 'insi7'
   IG.left.id = 'left7'
-  IG.head.id = 'head7'
   // IG.irig.setAttribute('aria-label', 'Next')
   // IG.ilef.setAttribute('aria-label', 'Previous')
   // IG.clos.setAttribute('aria-label', 'Close')

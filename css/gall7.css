@@ -112,14 +112,6 @@ body {
   transform: translateY(-50%)
 }
 
-#down7,
-#insi7,
-#ilef7,
-#irig7 {
-  pointer-events: none;
-  z-index: -1
-}
-
 #imag7 button {
   height: 48px;
   width: 48px;
@@ -129,7 +121,6 @@ body {
   -moz-appearance: none;
   appearance: none;
   background: rgba(0, 0, 0, .2);
-  z-index: 1;
 }
 
 #clos7:after,
@@ -226,15 +217,10 @@ body {
   width: 0
 }
 
-#cent7,
-#head7 {
+#cent7 {
   top: 0;
   width: 100%;
   left: 0
-}
-
-#head7 {
-  height: 72px;
 }
 
 #cent7,
@@ -289,6 +275,7 @@ body {
   top: 27px;
   height: 6px;
   width: 24px;
+  z-index: -1;
   border-top: 0
 }
 
