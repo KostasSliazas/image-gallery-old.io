@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Image gallery</title>
+  <title>Image gallery JavaScript</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Image gallery &mdash; vanilla JavaScript and CSS">
   <meta property="og:url" content="https://kostassliazas.github.io/image-gallery.io/">
@@ -14,10 +14,7 @@
   <link rel="canonical" href="https://kostassliazas.github.io/image-gallery.io/">
   <link rel="preload" href="css/listimg.min.css" as="style">
   <link rel="preload" href="css/style-page.min.css" as="style">
-  <link rel="preload" href="css/gall7.min.css" as="style">
-  <link rel="preload" href="js/gall7.min.js" as="script">
   <link rel="stylesheet" href="css/listimg.min.css">
-  <link rel="stylesheet" href="css/gall7.min.css">
   <link rel="stylesheet" href="css/style-page.min.css">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -37,30 +34,30 @@
     <header>
       <h1>Image gallery JavaScript + CSS (responsive)</h1>
       <div class="inside">
-        <a href="https://kostassliazas.github.io/svg-examples/" target="_blank" rel="noopener noreferrer">DEMO</a>
-        <a id="download" href="https://github.com/KostasSliazas/image-gallery.io/archive/refs/tags/7.zip" target="_blank" rel="noopener noreferrer">DOWNLOAD</a>
-        <a href="https://github.com/KostasSliazas/image-gallery.io" target="_blank" rel="noopener noreferrer">https://github.com/KostasSliazas/image-gallery.io</a>
+        <a href="https://kostassliazas.github.io/svg-examples/" target="_blank" rel="noreferrer">DEMO</a>
+        <a id="download" href="https://github.com/KostasSliazas/image-gallery.io/archive/refs/tags/7.zip" target="_blank" rel="noreferrer">DOWNLOAD</a>
+        <a href="https://github.com/KostasSliazas/image-gallery.io" target="_blank" rel="noreferrer">https://github.com/KostasSliazas/image-gallery.io</a>
       </div>
-      <p>minified JS <b>5.02 KB</b> + CSS file <b>4.03 KB</b> + (Optional)list CSS <b>0.421 KB</b> = <b>~10 KB</b></p>
     </header>
     <div class="wrap">
       <div>
         <div class="code">
+          <p class="code__p noselect"></p>
           <p class="code__p noselect"><i class="code__i--el">&lt;</i>!--Copy/Paste(ctrl+a/ctrl+c/ctrl+v)to<i class="code__i--el">&lt;</i>head<i class="code__i--el">&gt;</i>tag--<i class="code__i--el">&gt;</i></p>
-          <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">link</i> <i class="code__i--re">rel</i><i class="code__i--el">=</i><i class="code__i--st">"stylesheet"</i> <i class="code__i--re">href</i><i class="code__i--el">=</i>"css/listimg.min.css"<i class="code__i--el">&gt;</i><span class="noselect"><i class="code__i--el">&lt;</i>!--CSSimageList(optional)--<i class="code__i--el">&gt;</i></span><br></p>
-          <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">link</i> <i class="code__i--re">rel</i><i class="code__i--el">=</i><i class="code__i--st">"stylesheet"</i> <i class="code__i--re">href</i><i class="code__i--el">=</i>"css/gall7.min.css"<i class="code__i--el">&gt;</i><span class="noselect"><i class="code__i--el">&lt;</i>!--GalleryCSS--<i class="code__i--el">&gt;</i></span><br></p>
+          <!-- <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">link</i> <i class="code__i--re">rel</i><i class="code__i--el">=</i><i class="code__i--st">"stylesheet"</i> <i class="code__i--re">href</i><i class="code__i--el">=</i>"css/listimg.min.css"<i class="code__i--el">&gt;</i><span class="noselect"><i class="code__i--el">&lt;</i>!--CSSimageList(optional)--<i class="code__i--el">&gt;</i></span><br></p> -->
+          <!-- <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">link</i> <i class="code__i--re">rel</i><i class="code__i--el">=</i><i class="code__i--st">"stylesheet"</i> <i class="code__i--re">href</i><i class="code__i--el">=</i>"css/gall7.min.css"<i class="code__i--el">&gt;</i><span class="noselect"><i class="code__i--el">&lt;</i>!--GalleryCSS--<i class="code__i--el">&gt;</i></span><br></p> -->
           <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">script</i><i class="code__i--re"> defer </i><i class="code__i--re">src</i><i class="code__i--el">=</i>"js/gall7.min.js"<i class="code__i--el">&gt;</i><i class="code__i--el">&lt;</i>/<i class="code__i--sc">script</i><i class="code__i--el">&gt;</i><span class="noselect"><i class="code__i--el">&lt;</i>!--GalleryJavaScript--<i class="code__i--el">&gt;</i></span></p>
+          <p class="code__p noselect"></p>
         </div>
       </div>
       <div>
         <div class="code">
-          <p class="code__p noselect"><i class="code__i--el">&lt;</i>!-- optional configuration --<i class="code__i--el">&gt;</i></p>
+          <p class="code__p noselect"><i class="code__i--el">&lt;</i>!-- optional configuration(defaults) --<i class="code__i--el">&gt;</i></p>
           <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">script</i><i class="code__i--el">&gt;</i></p>
-          <p class="code__p"><i class="code__i--co">//with these defaults (optional)</i></p>
           <p class="code__p">window.IGConfig <i class="code__i--el">=</i> {</p>
           <p class="code__p">delaySeconds<i class="code__i--el">:</i> 2<i class="code__i--el">,</i></p>
-          <p class="code__p">showButtons<i class="code__i--el">:</i> true<i class="code__i--el">,</i></p>
-          <p class="code__p">showButtonsOnPlay<i class="code__i--el">:</i> true<i class="code__i--el">,</i></p>
+          <p class="code__p">showButtons<i class="code__i--el">:</i> 1<i class="code__i--el">,</i></p>
+          <p class="code__p">showButtonsOnPlay<i class="code__i--el">:</i> 1<i class="code__i--el">,</i></p>
           <p class="code__p">imageContainer<i class="code__i--el">:</i> 'images-container'<i class="code__i--el">,</i></p>
           <p class="code__p">folder<i class="code__i--el">:</i> 'big/', <i class="code__i--co">// string + "/" === folder</i></p>
           <p class="code__p">}</p>
@@ -81,6 +78,7 @@
     </div>
   </main>
   <footer>
+    <p>minified JS <b>5.02 KB</b> + CSS file <b>4.03 KB</b> + (Optional)list CSS <b>0.421 KB</b> = <b>~10 KB</b></p>
     <div class="addthis_inline_share_toolbox"></div>
     <h1>Image gallery with autoplay and download buttons, without external libraries just plain JavaScript (vanilla). Simple solution for portfolio or photo gallery.</h1>
   </footer>
