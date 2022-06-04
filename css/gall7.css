@@ -57,7 +57,6 @@ body {
 #imag7 * {
   box-sizing: border-box;
   position: absolute;
-  margin: 0;
 }
 
 #insi7 img,
@@ -277,6 +276,7 @@ body {
   height: 6px;
   width: 24px;
   z-index: -1;
+  margin: 0;
   border-top: 0
 }
 
