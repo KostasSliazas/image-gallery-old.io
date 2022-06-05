@@ -233,7 +233,7 @@ body {
 #insi7 img {
   max-height: 100%;
   max-width: 100%;
-  transition: .7s opacity;
+  transition: .7s filter;
 }
 
 #insi7 img[src$=".svg"] {
@@ -248,7 +248,6 @@ body {
 }
 
 .spin7 img {
-  opacity: .3;
   filter: grayscale(1)
 }
 
