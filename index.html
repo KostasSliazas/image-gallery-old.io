@@ -2,268 +2,93 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
-  <meta name="Description" content="by Kostas Sliazas">
-  <title>daug.eu</title>
-  <meta name="title" content="daug.eu">
-  <meta name="description" content="web tools, free stuff">
-  <meta name="keywords" content="web, tools, SVG, pictures, images, border, colors, gradient, shadows, CV, europass, random, winner,  games, gallery, html, template, wordpress, vectors, local, links, hameleon, free, design">
+  <meta charset="UTF-8">
+  <title>Image gallery JavaScript</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta property="og:url" content="https://kostassliazas.github.io/image-gallery.io/">
+  <meta property="og:type" content="Image gallery free">
+  <meta property="og:title" content="Image gallery JavaScript plain">
+  <meta property="og:description" content="Image gallery JavaScript + CSS">
+  <meta property="og:image" content="https://kostassliazas.github.io/image-gallery.io/photos/image1.jpg">
+  <meta name="title" content="Simple image gallery JavaScript + CSS (full screen) with play button">
+  <meta name="description" content="Simple image gallery without external libraries JavaScript(plain) + CSS">
+  <meta name="keywords" content="gallery,image,JavaScript,vanilla,photo,CSS,full, screen, play, auto">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
   <meta name="author" content="Kostas Šliažas">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="msapplication-TileColor" content="#9f00a7" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta property="og:url" content="https://kostassliazas.github.io/landing.github.io/" />
-  <meta property="og:type" content="daug.eu" />
-  <meta property="og:title" content="daug.eu" />
-  <meta property="og:description" content="daug.eu" />
-  <meta property="og:image" content="https://kostassliazas.github.io/landing.github.io/android-chrome-192x192.png" />
+  <link rel="canonical" href="https://kostassliazas.github.io/image-gallery.io/">
+  <link rel="preload" href="css/listimg.min.css" as="style">
+  <link rel="preload" href="css/style-page.min.css" as="style">
+  <link rel="stylesheet" href="css/listimg.min.css">
+  <link rel="stylesheet" href="css/style-page.min.css">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="manifest" href="site.webmanifest" />
-  <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5" />
-  <link rel="preload" href="css/css.min.css" as="style">
-  <link rel="preload" href="css/gall7.min.css" as="style">
-  <link rel="preload" href="js/script.min.js" as="script">
-  <link rel="preload" href="js/appinstall.min.js" as="script">
-  <link rel="stylesheet" href="css/css.min.css">
-  <script defer src="js/script.min.js"></script>
-  <script defer src="js/gall7.min.js"></script>
-  <script defer src="js/imgs.min.js"></script>
-  <script defer src="js/appinstall.min.js"></script>
-  <script defer id="cookieinfo" src="//cookieinfoscript.com/js/cookieinfo.min.js" data-bg="#777" data-fg="#FFFFFF"
-    data-link="#F1D600" data-cookie="CookieInfoScript" data-text-align="left" data-zindex="99999999"
-    data-accept-on-scroll="true" data-height="48" data-close-text="Got it!">
-  </script>
+  <link rel="manifest" href="site.webmanifest">
+  <script defer src="js/gall7.js"></script>
   <script>
-    IGConfig = {
-      delaySeconds: .5,
-      folder: '../'
+    window.IGConfig = {
+      delaySeconds: .7
     }
   </script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DL5NC4H0NE"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    
-    gtag('config', 'G-DL5NC4H0NE');
-    </script>
-<noscript>
-  <link rel="stylesheet" href="css/nos.min.css" />
-</noscript>
 </head>
 
 <body>
-  <div class="wraper">
-    <div id="spiner"><span></span></div>
-    <input type="checkbox" id="themesw" class="theme thm">
-    <label for="themesw" id="theme" class="theme">theme</label>
-    <a href="#main" class="theme top" rel="noopener noreferrer" tabindex="-1">Top</a>
-    <button class="bur" name="button" aria-haspopup="true" aria-controls="menus" aria-expanded="false"
-      aria-label="button" id="kmen">
-      <i></i>
-      <i></i>
-      <i></i>
-      <i></i>
-    </button>
-    <div class="navwrap">
-      <div class="menu">
-        <nav>
-          <a href="https://kostassliazas.github.io/landing.github.io" rel="noopener noreferrer" aria-label="logo" id="logo" tabindex="-1"><span
-              class="icon icon-logok"><span class="path2"></span></span></a>
-          <ul id="menus" class="exp hid nav" tabindex="-1">
-            <li>
-              <a href="#download">downloads</a>
-            </li>
-            <li>
-              <a href="#" role="button" aria-label="button">design</a>
-              <ul class="exp hid">
-                <li>
-                  <a href="#vector">vectors</a>
-                </li>
-                <li>
-                  <a href="#threed">3D graphics</a>
-                </li>
-                <li>
-                  <a href="#websites">websites</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href="#tools">web tools</a>
-            </li>
-            <li>
-              <a href="#" role="button" aria-label="button">support</a>
-              <ul class="exp hid">
-                <li>
-                  <a href="#support">support</a>
-                </li>
-                <li>
-                  <a href="#contacts">contacts</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+  <main>
     <header>
-      <div class="header">
-          <button class="hidden" id="install-button" type="button">
-            Install
-          </button>
-        <a href="https://kostassliazas.github.io/landing.github.io" rel="noopener noreferrer" tabindex="-1"><span class="logo">Welcome to daug.eu ;&gt;</span></a>
+      <h1>Image gallery JavaScript + CSS (responsive)</h1>
+      <div class="inside">
+        <a href="https://kostassliazas.github.io/svg-examples/" target="_blank" rel="noreferrer">DEMO</a>
+        <a id="download" href="https://github.com/KostasSliazas/image-gallery.io/archive/refs/tags/7.zip" target="_blank" rel="noreferrer">DOWNLOAD</a>
+        <a href="https://github.com/KostasSliazas/image-gallery.io" target="_blank" rel="noreferrer">https://github.com/KostasSliazas/image-gallery.io</a>
       </div>
     </header>
-    <div class="wrp" tabindex="0">
-      <div id="main" class="clearfix bg">
-        <div id="leftcolumn">
-          <div class="box" id="vector">
-            <h1>Vectors</h1>
-            <div class="images-container imgDiv group">
-              <div class="paveik one">
-                <span><img loading="lazy" height="200" width="400" src="svg/01.svg" alt="svg1" /></span>
-                <span><img loading="lazy" height="200" width="400" src="svg/02.svg" alt="svg2" /></span>
-                <span><img loading="lazy" height="200" width="400" src="svg/10.svg" alt="svg3" /></span>
-                <span><img loading="lazy" height="200" width="400" src="svg/04.svg" alt="svg4" /></span>
-                <span><img loading="lazy" height="200" width="400" src="svg/05.svg" alt="svg5" /></span>
-                <span><img loading="lazy" height="200" width="400" src="svg/06.svg" alt="svg6" /></span>
-                <span><img loading="lazy" height="200" width="400" src="svg/07.svg" alt="svg7" /></span>
-                <span><img loading="lazy" height="200" width="400" src="svg/08.svg" alt="svg8" /></span>
-                <span><img loading="lazy" height="200" width="400" src="svg/09.svg" alt="svg9" /></span>
-              </div>
-            </div>
-          </div>
-          <div class="box" id="threed">
-            <h1>3D graphics</h1>
-            <div class="images-container imgDiv group">
-              <div class="paveik two ran">
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/1.jpg" alt="1" /></span>
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/2.jpg" alt="2" /></span>
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/3.jpg" alt="3" /></span>
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/4.jpg" alt="4" /></span>
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/5.jpg" alt="5" /></span>
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/6.jpg" alt="6" /></span>
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/7.jpg" alt="7" /></span>
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/8.jpg" alt="8" /></span>
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/9.jpg" alt="9" /></span>
-                <span><img loading="lazy" height="200" width="400" src="photo/thumb/10.jpg" alt="10" /></span>
-              </div>
-            </div>
-          </div>
+    <div class="wrap">
+      <div>
+        <div class="code">
+          <p class="code__p noselect"></p>
+          <p class="code__p noselect">&lt;!--Copy/Paste(ctrl+a/ctrl+c/ctrl+v)to &lt;head&gt; or before closing &lt;/body&gt; tag--&gt;</p>
+          <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">script</i><i class="code__i--re"> defer </i><i class="code__i--re">src</i><i class="code__i--el">=</i>"js/gall7.min.js"<i class="code__i--el">&gt;</i><i class="code__i--el">&lt;</i>/<i class="code__i--sc">script</i><i class="code__i--el">&gt;</i><span class="noselect"><i class="code__i--el">&lt;</i>!--GalleryJavaScript--<i class="code__i--el">&gt;</i></span></p>
+          <p class="code__p noselect"></p>
         </div>
-        <div id="rightcolumn">
-          <div class="box" id="tools">
-            <h1><span class="icon-prop"></span>Web Tools</h1>
-            <p><a href="https://kostassliazas.github.io/border/" target="_blank" rel="noopener noreferrer">Border</a>
-            </p>
-            <p><a href="https://kostassliazas.github.io/border-radius.github.io/" target="_blank"
-                rel="noopener noreferrer">Border radius</a></p>
-            <p><a href="https://kostassliazas.github.io/colorzebra.github.io/" target="_blank"
-                rel="noopener noreferrer">COLORZEBRA</a></p>
-            <p><a href="https://kostassliazas.github.io/gradients.github.io" target="_blank" rel="noopener noreferrer">2
-                colors gradient</a></p>
-            <p><a href="https://kostassliazas.github.io/gradient-generator-2.github.io/" target="_blank"
-                rel="noopener noreferrer">gradients</a></p>
-            <p><a href="https://europass-maker-offline.now.sh/" target="_blank" rel="noopener noreferrer">cv-maker</a>
-            </p>
-            <p><a href="https://kostassliazas.github.io/links-webpage/" target="_blank"
-                rel="noopener noreferrer">links-webpage</a></p>
-            <p><a href="https://kostassliazas.github.io/kcolorandom/" target="_blank" rel="noopener noreferrer">Color
-                palettes</a></p>
-            <p><a href="https://kostassliazas.github.io/drunktextmaker.github.io/" target="_blank"
-                rel="noopener noreferrer">drunktextmaker</a></p>
-            <p><a href="https://kostassliazas.github.io/text-shadow.github.io/" target="_blank"
-                rel="noopener noreferrer">text-shadow</a></p>
-            <p><a href="https://kostassliazas.github.io/free-vectors.github.io/" target="_blank"
-                rel="noopener noreferrer">Free vectors</a></p>
-            <p><a href="https://kostassliazas.github.io/image-gallery.io/" target="_blank"
-                rel="noopener noreferrer">Image gallery</a></p>
-            <p><a href="https://kostassliazas.github.io/random-winner-name/" target="_blank"
-                rel="noopener noreferrer">Random winner name</a></p>
-            <p><a href="https://kostassliazas.github.io/todo-app/" target="_blank"
-                rel="noopener noreferrer">todo-app</a></p>
-          </div>
-          <div class="box" id="download">
-            <h1><span class="icon-down"></span>Downloads</h1>
-            <p><a target="_blank" rel="noopener noreferrer" href="downloads/hameleon.zip">HTML template hameleon</a></p>
-            <p><a target="_blank" rel="noopener noreferrer" href="downloads/template.zip">HTML template Simple</a></p>
-            <p><a target="_blank" rel="noopener noreferrer"
-                href="https://github.com/KostasSliazas/template-html.io/archive/refs/tags/1.0.zip">HTML template simplest</a></p>
-            <p><a href="https://dl.dropboxusercontent.com/s/9qo7loow86b29lf/cv-maker.zip?dl=0" rel="noopener noreferrer"
-                target="_blank">CV-maker</a></p>
-            <p><a href="https://dl.dropboxusercontent.com/s/iuj6x574vuzi8vr/SVG.zip?dl=0" rel="noopener noreferrer"
-                target="_blank">Free 77
-                vectors(*.svg)</a></p>
-            <p><a href="https://www.dl.dropboxusercontent.com/s/zd2nld9u60f92xk/LINKS.zip?dl=0"
-                rel="noopener noreferrer" target="_blank">Local links</a></p>
-            <p><a href="https://www.dl.dropboxusercontent.com/s/h68d5ui3tz3y2fc/K777.zip?dl=0" rel="noopener noreferrer"
-                target="_blank">WordPress
-                Theme</a></p>
-            <p><a target="_blank" rel="noopener noreferrer"
-                href="https://dl.dropboxusercontent.com/s/fmmiyresjdhr7t8/SVG-MAX-by-Kostas-Sliazas.zip?dl=0">Free
-                vectors 222</a></p>
-          </div>
-          <div class="box" id="websites">
-            <h1><span class="icon-logok"><span class="path1"></span></span>Websites</h1>
-            <div class="allcontainer">
-              <div class="imgcontainer">
-                <a href="https://europass-maker-offline.now.sh/" aria-label="cv-maker" target="_blank"
-                  rel="noopener noreferrer nofollow"><img loading="lazy" src="img/image-320-001.jpg" alt="cv-maker" /></a>
-                <a href="https://kostassliazas.github.io/kcolorandom/" aria-label="kcolor" target="_blank"
-                  rel="noopener noreferrer nofollow"><img loading="lazy" src="img/image-320-002.jpg" alt="2" /></a>
-                <a href="https://kostassliazas.github.io/Game7x7x7.github.io/" aria-label="Game 7x7x7" target="_blank"
-                  rel="noopener noreferrer nofollow"><img loading="lazy" src="img/image-320-003.jpg" alt="Game 7x7x7" /></a>
-                <a href="https://kostassliazas.github.io/html-template/" aria-label="link2" target="_blank"
-                  rel="noopener noreferrer nofollow"><img loading="lazy" src="img/image-320-008.jpg" alt="7" /></a>
-                <a href="https://kostassliazas.github.io/game-cards.github.io/" aria-label="MemoryGame" target="_blank"
-                  rel="noopener noreferrer nofollow"><img loading="lazy" src="img/image-320-042.jpg" alt="8" /></a>
-                <a href="https://kostassliazas.github.io/burundukas.github.io/" aria-label="burundukas" target="_blank"
-                  rel="noopener noreferrer nofollow"><img loading="lazy" src="img/image-320-010.jpg" alt="8" /></a>
-                <a href="https://kostassliazas.github.io/links.github.io/" aria-label="burundukas" target="_blank"
-                  rel="noopener noreferrer nofollow"><img loading="lazy" src="img/image-320-701.jpg" alt="8" /></a>
-                <a href="https://kostassliazas.github.io/questions.github.io/" aria-label="questions" target="_blank"
-                  rel="noopener noreferrer nofollow"><img loading="lazy" src="img/image-320-702.jpg" alt="questions" /></a>
-                <!-- <a href="https://holypee.000webhostapp.com/TIK-TAK-TO/" aria-label="Tik-tak-toa" target="_blank"
-                  rel="noopener noreferrer nofollow"><img src="img/image-320-004.png" alt="Tik-tak-toa" /></a> -->
-              </div>
-              <div class="lbtn"></div>
-              <div class="rbtn"></div>
-              <div class="pbtn acts"></div>
-              <div class="loader"></div>
-            </div>
-          </div>
-          <div class="box" id="contacts">
-            <h1><span class="icon-mail"></span>Contacts</h1>
-            <div class="h24">
-              <a class="icos cryptedmail btnsd" id="mailto" data-nam="kostazzz" data-lt="lt" data-dom="balticum-tv"
-              href="#" onclick="event.stopPropagation();event.preventDefault();window.location.href=
-                    'mailto:'
-                    + this.dataset.nam +
-                    '@' + this.dataset.dom + '.' + this.dataset.lt;" aria-label="send email">e-mail</a>
-            </div>
-          </div>
-          <div class="box wrap" id="support">
-            <h1><span class="icon-pers"></span>Support</h1>
-            <div class="h24">
-              <a target="_blank" class="btnsd" rel="noopener noreferrer"
-                href="https://www.paypal.com/paypalme/kostassliazas">Donate</a>
-            </div>
-          </div>
-        </div>
-        <div id="footer">
-          <p><span class="class10">&copy;2022</span></p>
+      </div>
+      <div>
+        <div class="code">
+          <p class="code__p noselect"><i class="code__i--el">&lt;</i>!-- optional configuration(defaults) --<i class="code__i--el">&gt;</i></p>
+          <p class="code__p"><i class="code__i--el">&lt;</i><i class="code__i--sc">script</i><i class="code__i--el">&gt;</i></p>
+          <p class="code__p">window.IGConfig <i class="code__i--el">=</i> {</p>
+          <p class="code__p">delaySeconds<i class="code__i--el">:</i> 2<i class="code__i--el">,</i></p>
+          <p class="code__p">showButtons<i class="code__i--el">:</i> 1<i class="code__i--el">,</i></p>
+          <p class="code__p">showButtonsOnPlay<i class="code__i--el">:</i> 1<i class="code__i--el">,</i></p>
+          <p class="code__p">imageContainer<i class="code__i--el">:</i> 'images-container'<i class="code__i--el">,</i></p>
+          <p class="code__p">folder<i class="code__i--el">:</i> 'big/', <i class="code__i--co">// string + "/" === folder</i></p>
+          <p class="code__p">}</p>
+          <p class="code__p"><i class="code__i--el">&lt;</i>/<i class="code__i--sc">script</i><i class="code__i--el">&gt;</i></p>
         </div>
       </div>
     </div>
-  </div>
+    <div class="images-container">
+      <ul>
+        <li><img src="photos/image1.jpg" loading="lazy" alt="image gallery2"></li>
+        <li><img src="photos/image2.jpg" loading="lazy" alt="image gallery2"></li>
+        <li><img src="photos/image3.jpg" loading="lazy" alt="image gallery3"></li>
+        <li><img src="photos/image4.jpg" loading="lazy" alt="image gallery4"></li>
+        <li><img src="photos/image5.jpg" loading="lazy" alt="image gallery5"></li>
+        <li><img src="photos/image6.jpg" loading="lazy" alt="image gallery6"></li>
+        <li><img src="photos/image7.jpg" loading="lazy" alt="image gallery7"></li>
+      </ul>
+      <h1>Image gallery with autoplay and download buttons, without external libraries just plain JavaScript (vanilla). Simple solution for portfolio or photo gallery.</h1>
+      <p><b class="code__i--re">imageContainer: </b><b><i>image gallery selects all images with given (classes) and if not set it selects all images by default.</i></b></p>
+      <p><b class="code__i--re">showButtons: </b><b><i>show bottom buttons (autoplay && download)</i></b></p>
+      <p><b class="code__i--re">folder: </b><b><i>location to bigger resolution images or images prefix</i></b></p>
+      <p><b class="code__i--re">delaySeconds: </b><b><i>how long to show image on autoplay</i></b></p>
+      <p><b class="code__i--re">showButtonsOnPlay: </b><b><i>show buttons on autoplay</i></b></p>
+      <p class="code__i--el">minified JS <b>5.12 KB</b> + CSS file <b>3.77 KB</b></p>
+    </div>
+  </main>
+  <footer>
+    by Kostas Šliažas
+  </footer>
 </body>
 
 </html>
