@@ -23,20 +23,18 @@ body {
 }
 
 #imag7 {
-  background: #000;
-  color: #777;
-  font: 12px/4 Arial, sans-serif;
-  height: 100%;
-  width: 100%;
-  letter-spacing: 1px;
-  overflow: hidden;
-  position: fixed;
-  z-index: 99999999;
-  -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  -webkit-user-select: none;
+  background: #000;
+  color: #777;
+  font: 12px/4 sans-serif;
+  height: 100%;
+  position: fixed;
   user-select: none;
-  white-space: nowrap
+  white-space: nowrap;
+  width: 100%;
+  z-index: 99999999;
 }
 
 #imag7 * {
@@ -63,6 +61,8 @@ body {
 #insi7,
 #alts7,
 #stat7 {
+  max-height: 100%;
+  max-width: 100%;
   position: relative;
   z-index: -1
 }
@@ -107,6 +107,7 @@ body {
 #insi7 img,
 #irig7 {
   top: 50%;
+  pointer-events: none;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%)
@@ -230,13 +231,7 @@ body {
   text-align: center;
 }
 
-#insi7 img {
-  max-height: 100%;
-  max-width: 100%;
-  transition: .7s filter;
-}
-
-#insi7 img[src$=".svg"] {
+#insi7 img[src*=".svg"] {
   background: #fafafa
 }
 
@@ -245,10 +240,6 @@ body {
   border-radius: 50%;
   height: 24px;
   width: 24px
-}
-
-.spin7 img {
-  filter: grayscale(1)
 }
 
 .spin7::after {
@@ -294,7 +285,6 @@ body {
 .spin7::after {
   box-sizing: border-box;
   content: "";
-  display: block;
   position: absolute
 }
 
