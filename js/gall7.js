@@ -64,18 +64,11 @@
   }
   d.body.appendChild(IG.frag)// append document fragment to <body>
 
-  // autoplay method
-  IG.autoPlay = function () {
-    if (this.isAutoPlayOn) this.clear()
-    else {
-      this.isAutoPlayOn = true
-      if (IG.showButtons) this.play.className = 'acts7'
-      this.loaded(this.imgs, this.imgs.src)
-    }
-  }
-
   // autoplay method loop
   IG.autoPlayLoop = function () {
+    this.isAutoPlayOn = true
+    if (IG.showButtons) this.play.className = 'acts7'
+
     this.timeOut = setTimeout(function () {
       this.right().show()
       if (!this.showButtonsOnPlay) {
@@ -87,26 +80,15 @@
   }
 
   // autoplay and image loaded helper to remove class 'loader'
-  IG.loadComplete = function (e) {
-    if (typeof e !== 'undefined' && e.parentElement) e.parentElement.className = ''
+  IG.loadComplete = function () {
+    // if (typeof e !== 'undefined' && e.parentElement) e.parentElement.className = ''
+    this.insi.className = ''
     this.isAutoPlayOn && this.autoPlayLoop()
   }
 
   // image is loaded method
-  IG.loaded = function (e, src) {
-    e.onload = this.loadComplete.bind(this, e)
-    e.src = src
-  }
-
-  // clear method to reset all values
-  IG.clear = function () {
-    clearTimeout(this.timeOut)
-    this.timeOut = 0
-    this.isAutoPlayOn = false
-    if (this.showButtons) this.foot.className = this.onow.className = this.play.className = ''
-    if (!this.showButtonsOnPlay) this.clos.className = ''
-    this.leftRigthBtnsShow()
-    return this
+  IG.loaded = function () {
+    this.imgs.onload = this.loadComplete.bind(this)
   }
 
   // downloads method
@@ -126,7 +108,7 @@
   IG.lefts = function () {
     if (this.indexOfImage > 0) this.indexOfImage--
     else this.indexOfImage = this.imagesArray.length - 1
-    this.ilef.focus()
+    // this.ilef.focus()
     return this
   }
 
@@ -134,7 +116,18 @@
   IG.right = function () {
     if (this.indexOfImage < this.imagesArray.length - 1) this.indexOfImage++
     else this.indexOfImage = 0
-    this.irig.focus()
+    // this.irig.focus()
+    return this
+  }
+
+  // clear method to reset all values
+  IG.clear = function () {
+    clearTimeout(this.timeOut)
+    this.timeOut = 0
+    this.isAutoPlayOn = false
+    if (this.showButtons) this.foot.className = this.onow.className = this.play.className = ''
+    if (!this.showButtonsOnPlay) this.clos.className = ''
+    this.leftRigthBtnsShow()
     return this
   }
 
@@ -154,28 +147,29 @@
 
   // show image method to show image when loaded
   IG.show = function () {
-    this.insi.className = 'spin7'
     if (!this.isActive) { // don't rewrite values if active and set active gallery
       this.isActive = true
       d.documentElement.style.overflow = 'hidden'// this stops from scroll when tab pressed and hides scrollbar
       this.imag.className = ''
-      // this.irig.focus()
     }
-
     this.leftRigthBtnsShow()
-    const image = this.imagesArray[this.indexOfImage]
-    const fileName = image.src.split('/').pop()// get image src file name
+    this.insi.className = 'spin7'
+    this.imgs && this.insi.removeChild(this.imgs) // if image exist remove and later recreate it
+    this.imgs = d.createElement('img')
+    const fullName = this.imagesArray[this.indexOfImage].src
+    const fileName = fullName.split('/').pop()
+    this.loaded()
+    this.insi.appendChild(this.imgs)
+    this.imgs.src = fileName.slice(0, -3) === 'svg' ? fullName : fullName.replace(fileName, this.folder + fileName)
+
+    this.imgs.onerror = function (e) {
+      e.target.src = this.imagesArray[this.indexOfImage].src
+    }.bind(this)
 
     if (this.showButtons) {
       this.alts.innerText = decodeURI(fileName)
       this.fine.innerText = Number(this.indexOfImage) + 1 + '/' + this.imagesArray.length
     }
-    this.imgs && this.insi.removeChild(this.insi.firstChild)// if image exist remove and later recreate it
-    this.imgs = d.createElement('img')
-    this.imgs.setAttribute('alt', image.getAttribute('alt') || 'No alt attribute')
-    this.imgs.onerror = function (e) { e.target.src = image.src }
-    this.loaded(this.imgs, image.src.substr(image.src.length - 3) === 'svg' ? image.src : image.src.replace(fileName, this.folder + fileName))
-    this.insi.appendChild(this.imgs)
   }
 
   // listen for clicked on image element and load show method
@@ -205,28 +199,34 @@
   if (containersArray[0] && containersArray[0].tagName === 'BODY') d.body.addEventListener('click', function (e) { IG.listenForIG(e) })
   else for (let k = containersArray.length - 1; k >= 0; k--) containersArray[k].addEventListener('click', function (e) { IG.listenForIG(e) })
 
+  const k = {
+    'ArrowLeft': function () { IG.clear().lefts().show() }, // eslint-disable-line
+    'ArrowRight': function () { IG.clear().right().show() }, // eslint-disable-line
+    'Escape': function () { IG.close() }, // eslint-disable-line
+    ' ': function () { IG.isAutoPlayOn ? IG.clear() : IG.autoPlayLoop() } // eslint-disable-line
+  }
+
+  const c = {
+    'left7': k['ArrowLeft'], // eslint-disable-line
+    'rigt7': k['ArrowRight'], // eslint-disable-line
+    'play7': k[' '], // eslint-disable-line
+    'clos7': k['Escape'], // eslint-disable-line
+    'wdow7': function () { IG.imagesArray[IG.indexOfImage].src.split('/').pop() !== IG.onow.dataset.selected && IG.clear().downloads() } // eslint-disable-line
+  }
+
   // add click addEventListener to image div (gallery window)
   IG.imag.addEventListener('click', function (e) {
-    const target = e.target.id
-    if (target === 'wdow7' && IG.imagesArray[IG.indexOfImage].src.split('/').pop() !== IG.onow.dataset.selected) IG.clear().downloads()
-    if (target === 'rigt7' || target === 'irig7') IG.clear().right().show()
-    if (target === 'left7' || target === 'ilef7') IG.clear().lefts().show()
-    if (target === 'cent7' && IG.isAutoPlayOn) IG.clear()
-    target === 'play7' && IG.autoPlay()
-    target === 'clos7' && IG.close()
-    e.stopImmediatePropagation()
+    const id = e.target.id
+    if (!c[id]) return IG.isAutoPlayOn && IG.clear()
+    c[id]()
   })
 
   // add keyup addEventListener to image div (gallery window)
   w.addEventListener('keyup', function (e) {
-    const key = e.key
-    if (!IG.isActive || e.isComposing || key === 229) return
-    key === 'ArrowLeft' && IG.clear().lefts().show()
-    key === 'ArrowRight' && IG.clear().right().show()
-    key === 'Escape' && IG.close()
-    key === ' ' && IG.autoPlay()
-    e.preventDefault()
-    e.stopImmediatePropagation()
+    if (!k[e.key] || !IG.isActive || e.isComposing || e.key === 229) return
+    k[e.key]()
+    // e.preventDefault()
+    // e.stopImmediatePropagation()
   })
   // everything to handle swipe left/right
   // https://code-maven.com/swipe-left-right-vanilla-javascript
@@ -251,8 +251,8 @@
     const moveY = endYPos - startYPos
     const elapsedTime = endTime - startTime
     if (Math.abs(moveX) > minHorizontalMove && Math.abs(moveY) < maxVerticalMove && elapsedTime < withinMs) {
-      if (moveX < 0) IG.clear().right().show()
-      else IG.clear().lefts().show()
+      if (moveX < 0) c['rigt7']() // eslint-disable-line
+      else c['left7']() // eslint-disable-line
     }
   }
   IG.imag.addEventListener('touchstart', touchStart, { passive: true })
