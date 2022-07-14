@@ -161,7 +161,7 @@
     this.loaded()
     this.insi.appendChild(this.imgs)
     this.imgs.src = fileName.slice(0, -3) === 'svg' ? fullName : fullName.replace(fileName, this.folder + fileName)
-
+    this.imgs.setAttribute('alt', this.imagesArray[this.indexOfImage].getAttribute('alt'))
     this.imgs.onerror = function (e) {
       e.target.src = this.imagesArray[this.indexOfImage].src
     }.bind(this)
