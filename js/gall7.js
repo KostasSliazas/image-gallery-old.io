@@ -1,14 +1,26 @@
 (function (w, d) {
   'use strict'
-  const resource = document.createElement('link')
-  resource.setAttribute('rel', 'stylesheet')
-  resource.setAttribute('href', 'css/gall7.min.css')
-  document.getElementsByTagName('head')[0].appendChild(resource)
-  const getConfig = typeof w['IGConfig'] === 'undefined' || w['IGConfig'] // eslint-disable-line
+  /**
+ * @param {...*} e
+ */
+  const a = function (e) {
+    for (let i = 1; i < arguments.length; i++) e.appendChild(arguments[i])
+  }
+  /**
+ * @param {...*} e
+ */
+  const t = function (e) {
+    for (let i = 1; i < arguments.length; i += 2) e.setAttribute(arguments[i], arguments[i + 1])
+  }
+  const e = function (e) { return d.createElement(e) }
+  const resource = e('link')
+  t(resource, 'rel', 'stylesheet', 'href', 'css/gall7.min.css')
+  a(d.getElementsByTagName('head')[0], resource)
+  const getConfig = typeof w['IGConfig'] !== 'undefined' && w['IGConfig'] // eslint-disable-line
   const IG = {}
   IG.folder = getConfig['folder'] || 'big/' // eslint-disable-line
   IG.imageContainer = getConfig['imageContainer'] || 'images-container' // eslint-disable-line
-  IG.timer = typeof getConfig['delaySeconds'] === 'number' && isFinite(getConfig['delaySeconds']) ? getConfig['delaySeconds'] * 1000 : 2000 // eslint-disable-line
+  IG.timer = isFinite(getConfig['delaySeconds']) ? getConfig['delaySeconds'] * 1000 : 1700 // eslint-disable-line
   IG.showButtonsOnPlay = typeof getConfig['showButtonsOnPlay'] === 'undefined' ? true : !!getConfig['showButtonsOnPlay'] // eslint-disable-line
   IG.showButtons = typeof getConfig['showButtons'] === 'undefined' ? true : !!getConfig['showButtons'] // eslint-disable-line
   IG.imagesArray = []// all elements array
@@ -16,53 +28,58 @@
   IG.isActive = false
   IG.indexOfImage = 0
   IG.timeOut = 0
-  IG.frag = d.createDocumentFragment()// all stuff for creating main gallery window
-  IG.clos = d.createElement('button')
-  IG.ilef = d.createElement('button')
-  IG.irig = d.createElement('button')
-  IG.imag = d.createElement('div')
-  IG.cent = d.createElement('div')
-  IG.left = d.createElement('div')
-  IG.rigt = d.createElement('div')
-  IG.insi = d.createElement('div')
-  IG.cent.appendChild(IG.rigt).appendChild(IG.irig).id = 'irig7'
-  IG.cent.appendChild(IG.insi)
-  IG.cent.appendChild(IG.left).appendChild(IG.ilef).id = 'ilef7'
-  IG.cent.appendChild(IG.clos).id = 'clos7'
-  IG.imag.appendChild(IG.cent).id = 'cent7'
-  IG.frag.appendChild(IG.imag).id = 'imag7'
+  // IG.frag = d.createDocumentFragment()// all stuff for creating main gallery window
+  IG.clos = e('button')
+  IG.ilef = e('button')
+  IG.irig = e('button')
+  IG.imag = e('div')
+  IG.cent = e('div')
+  IG.left = e('div')
+  IG.rigt = e('div')
+  IG.insi = e('div')
+  a(IG.cent, IG.rigt, IG.insi, IG.left, IG.clos)
+  a(IG.rigt, IG.irig)
+  a(IG.left, IG.ilef)
+  a(IG.imag, IG.cent)
+  // a(IG.frag, IG.imag)
+  IG.cent.id = 'cent7'
+  IG.ilef.id = 'ilef7'
+  IG.irig.id = 'irig7'
+  IG.clos.id = 'clos7'
   IG.rigt.id = 'rigt7'
   IG.insi.id = 'insi7'
   IG.left.id = 'left7'
-  IG.irig.setAttribute('aria-label', 'Next')
-  IG.ilef.setAttribute('aria-label', 'Previous')
-  IG.clos.setAttribute('aria-label', 'Close')
-  IG.clos.setAttribute('title', 'Press Esc to close')
-  // IG.imag.setAttribute('tabindex', '-1')
+  IG.imag.id = 'imag7'
   IG.imag.className = 'hide7'
+  t(IG.irig, 'aria-label', 'Next')
+  t(IG.ilef, 'aria-label', 'Previous')
+  t(IG.clos, 'aria-label', 'Close', 'title', 'Press Esc to close')
+  // IG.imag.setAttribute('tabindex', '-1')
 
   // show download and autoplay buttons if (true = default)
   if (IG.showButtons) {
-    IG.wdow = d.createElement('button')
-    IG.play = d.createElement('button')
-    IG.wdow.setAttribute('aria-label', 'Download')
-    IG.play.setAttribute('aria-label', 'Play')
-    IG.foot = d.createElement('div')
-    IG.alts = d.createElement('div')
-    IG.onow = d.createElement('div')
-    IG.fine = d.createElement('div')
-    IG.down = d.createElement('span')
+    IG.wdow = e('button')
+    IG.play = e('button')
+    IG.foot = e('div')
+    IG.alts = e('div')
+    IG.onow = e('div')
+    IG.fine = e('div')
+    IG.down = e('span')
+    a(IG.onow, IG.alts, IG.wdow)
+    a(IG.imag, IG.onow, IG.foot)
+    a(IG.foot, IG.play, IG.fine)
+    a(IG.wdow, IG.down)
+    IG.alts.id = 'alts7'
+    IG.play.id = 'play7'
     IG.foot.id = 'foot7'
     IG.onow.id = 'onow7'
     IG.down.id = 'down7'
     IG.wdow.id = 'wdow7'
     IG.fine.id = 'stat7'
-    IG.onow.appendChild(IG.alts).id = 'alts7'
-    IG.imag.appendChild(IG.foot).appendChild(IG.play).id = 'play7'
-    IG.imag.appendChild(IG.onow).appendChild(IG.wdow).appendChild(IG.down)
-    IG.foot.appendChild(IG.fine)
+    t(IG.wdow, 'aria-label', 'Download')
+    t(IG.play, 'aria-label', 'Play')
   }
-  d.body.appendChild(IG.frag)// append document fragment to <body>
+  a(d.body, IG.imag)// append document fragment to <body>
 
   // autoplay method loop
   IG.autoPlayLoop = function () {
@@ -93,13 +110,10 @@
 
   // downloads method
   IG.downloads = function () {
-    const a = d.createElement('a')// create link
+    const a = e('a')// create link
     const fileName = this.imgs.src.split('/').pop()// add class active for button animation
     this.onow.dataset.selected = fileName
-    a.setAttribute('rel', 'noreferrer')
-    a.setAttribute('download', fileName)
-    a.href = this.imgs.src
-    a.target = '_blank'
+    t(a, 'rel', 'noreferrer', 'download', fileName, 'href', this.imgs.src, 'target', '_blank')
     a.click()
     a.remove()
   }
@@ -155,13 +169,13 @@
     this.leftRigthBtnsShow()
     this.insi.className = 'spin7'
     this.imgs && this.insi.removeChild(this.imgs) // if image exist remove and later recreate it
-    this.imgs = d.createElement('img')
+    this.imgs = e('img')
     const fullName = this.imagesArray[this.indexOfImage].src
     const fileName = fullName.split('/').pop()
     this.loaded()
-    this.insi.appendChild(this.imgs)
+    a(this.insi, this.imgs)
     this.imgs.src = fileName.slice(0, -3) === 'svg' ? fullName : fullName.replace(fileName, this.folder + fileName)
-    this.imgs.setAttribute('alt', this.imagesArray[this.indexOfImage].getAttribute('alt'))
+    t(this.imgs, 'alt', this.imagesArray[this.indexOfImage].getAttribute('alt'))
     this.imgs.onerror = function (e) {
       // escape from infininte loop
       e.target.onerror = null
