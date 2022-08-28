@@ -142,7 +142,7 @@ body {
 
 #ilef7::after,
 #irig7::after {
-  content: "";
+  content: '';
   padding: 9px;
   position: absolute;
   transition: .1s transform;
@@ -277,7 +277,7 @@ body {
 #play7::before,
 .spin7::after {
   box-sizing: border-box;
-  content: "";
+  content: '';
   position: absolute
 }
 
