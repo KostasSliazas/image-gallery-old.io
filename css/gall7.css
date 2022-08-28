@@ -26,11 +26,11 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
+  user-select: none;
   background: #000;
   color: #777;
   height: 100%;
   position: fixed;
-  user-select: none;
   white-space: nowrap;
   width: 100%;
   z-index: 99999999;
@@ -64,7 +64,6 @@ body {
   max-height: 100%;
   max-width: 100%;
   position: relative;
-  z-index: -1
 }
 
 #clos7,
@@ -248,7 +247,6 @@ body {
   left: 50%;
   margin: -12px 0 0 -12px;
   top: 50%;
-  z-index: 1
 }
 
 #down7,
