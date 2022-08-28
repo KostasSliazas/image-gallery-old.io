@@ -1,9 +1,6 @@
 (function (w, d) {
   'use strict'
   /**
-  * Image gallery (simple plain JavaScript) using only almost ID's (if you don't like it write for yourself with classe's)
-  /**
-
  * Function appendChild helper
  * @param {...*} e
  */
@@ -94,7 +91,6 @@
 
   // autoplay and image loaded helper to remove class 'loader'
   IG.loadComplete = function () {
-    // if (typeof e !== 'undefined' && e.parentElement) e.parentElement.className = ''
     // remove class spin7 (loader)
     this.insi.className = ''
     // if autoplay is set loop from images
@@ -193,12 +189,14 @@
     // append image to div
     append(this.insi, this.imgs)
 
-    // on image onload and onerror methods
-    this.imgs.onload = this.loadComplete.bind(this)
+    // image onerror methods
     this.imgs.onerror = function (e) {
       e.target.onerror = null // escape from infinite loop
       e.target.src = fullName // set same img source
     }
+
+    // image onload methods
+    this.imgs.onload = this.loadComplete.bind(this)
 
     // set image src if svg return full name else try to load big image
     this.imgs.src = fullNamePrefixed
@@ -253,27 +251,26 @@
   if (containersArray[0] && containersArray[0].tagName === 'BODY') d.body.addEventListener('click', function (e) { IG.listenForIG(e) })
   else for (let k = containersArray.length - 1; k >= 0; k--) containersArray[k].addEventListener('click', function (e) { IG.listenForIG(e) })
 
+  /** @suppress {missingProperties} */
   const k = {
-    'ArrowLeft': function () { IG.clear().lefts().show() }, // eslint-disable-line
-    'ArrowRight': function () { IG.clear().right().show() }, // eslint-disable-line
-    'Escape': function () { IG.close() }, // eslint-disable-line
-    ' ': function () { IG.isAutoPlayOn ? IG.clear() : IG.autoPlayLoop() } // eslint-disable-line
+    'left7': function () { IG.clear().lefts().show() }, // eslint-disable-line
+    'rigt7': function () { IG.clear().right().show() }, // eslint-disable-line
+    'clos7': function () { IG.close() }, // eslint-disable-line
+    'wdow7': function () { IG.clear().downloads() }, // eslint-disable-line
+    'play7': function () { IG.isAutoPlayOn ? IG.clear() : IG.autoPlayLoop() } // eslint-disable-line
   }
+  /** @suppress {missingProperties} */
+    k['ArrowLeft'] = k['left7'] // eslint-disable-line
+    k['ArrowRight'] = k['rigt7'] // eslint-disable-line
+    k[' '] = k['play7'] // eslint-disable-line
+    k['Escape'] = k['clos7'] // eslint-disable-line
 
-  const c = {
-    'left7': k['ArrowLeft'], // eslint-disable-line
-    'rigt7': k['ArrowRight'], // eslint-disable-line
-    'play7': k[' '], // eslint-disable-line
-    'clos7': k['Escape'], // eslint-disable-line
-    'wdow7': function () { IG.clear().downloads() } // eslint-disable-line
-  }
-  // IG.imagesArray[IG.indexOfImage].src.split('/').pop() !== IG.onow.dataset.selected &&
   // add click addEventListener to image div (gallery window)
   IG.imag.addEventListener('click', function (e) {
     const id = e.target.id
-    if (!c[id]) return IG.isAutoPlayOn && IG.clear()
-    c[id]()
-    // e.preventDefault()
+    if (!k[id]) return IG.isAutoPlayOn && IG.clear()
+    k[id]()
+    e.preventDefault()
     e.stopImmediatePropagation()
   })
 
@@ -308,8 +305,8 @@
     const moveY = endYPos - startYPos
     const elapsedTime = endTime - startTime
     if (Math.abs(moveX) > minHorizontalMove && Math.abs(moveY) < maxVerticalMove && elapsedTime < withinMs) {
-      if (moveX < 0) c['rigt7']() // eslint-disable-line
-      else c['left7']() // eslint-disable-line
+      if (moveX < 0) k['rigt7']() // eslint-disable-line
+      else k['left7']() // eslint-disable-line
     }
   }
   IG.imag.addEventListener('touchstart', touchStart, { passive: true })
