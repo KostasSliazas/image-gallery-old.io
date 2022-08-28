@@ -52,10 +52,6 @@
   IG.left = element('div')
   IG.rigt = element('div')
   IG.insi = element('div')
-  append(IG.cent, IG.rigt, IG.insi, IG.left, IG.clos)
-  append(IG.rigt, IG.irig)
-  append(IG.left, IG.ilef)
-  append(IG.imag, IG.cent)
   IG.cent.id = 'cent7'
   IG.ilef.id = 'ilef7'
   IG.irig.id = 'irig7'
@@ -65,6 +61,10 @@
   IG.left.id = 'left7'
   IG.imag.id = 'imag7'
   IG.imag.className = 'hide7'
+  append(IG.cent, IG.rigt, IG.insi, IG.left, IG.clos)
+  append(IG.rigt, IG.irig)
+  append(IG.left, IG.ilef)
+  append(IG.imag, IG.cent)
   atribute(IG.irig, 'aria-label', 'Next')
   atribute(IG.ilef, 'aria-label', 'Previous')
   atribute(IG.clos, 'aria-label', 'Close', 'title', 'Press Esc to close')
