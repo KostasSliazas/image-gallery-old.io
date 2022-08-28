@@ -61,7 +61,7 @@
   IG.left.id = 'left7'
   IG.imag.id = 'imag7'
   IG.imag.className = 'hide7'
-  append(IG.cent, IG.rigt, IG.insi, IG.left, IG.clos)
+  append(IG.cent, IG.insi, IG.rigt, IG.left, IG.clos)
   append(IG.rigt, IG.irig)
   append(IG.left, IG.ilef)
   append(IG.imag, IG.cent)
@@ -124,7 +124,7 @@
     this.isAutoPlayOn = false
     if (this.showButtons) this.foot.className = this.onow.className = this.play.className = ''
     if (!this.showButtonsOnPlay) this.clos.className = ''
-    this.leftRigthBtnsShow()
+    // this.leftRigthBtnsShow()
     return this
   }
 
@@ -137,10 +137,10 @@
   }
 
   // Left right buttons show/check method
-  IG.leftRigthBtnsShow = function () {
-    this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
-    this.rigt.className = this.indexOfImage === this.imagesArray.length - 1 ? 'hide7' : ''
-  }
+  // IG.leftRigthBtnsShow = function () {
+  //   this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
+  //   this.rigt.className = this.indexOfImage === this.imagesArray.length - 1 ? 'hide7' : ''
+  // }
 
   // show image method to show image when loaded and recreating image element
   IG.show = function () {
@@ -166,7 +166,7 @@
     this.imgs && this.insi.removeChild(this.imgs)
 
     // show left right buttons and bottom information (file name and index)
-    this.leftRigthBtnsShow()
+    // this.leftRigthBtnsShow()
 
     // show index and filename
     if (this.showButtons) {
@@ -261,11 +261,10 @@
 
   // add click addEventListener to image div (gallery window)
   IG.imag.addEventListener('click', function (e) {
-    const id = e.target.id
-    if (!k[id]) return IG.isAutoPlayOn && IG.clear()
-    k[id]()
+    if (!k[e.target.id]) return IG.isAutoPlayOn && IG.clear()
+    k[e.target.id]()
     e.preventDefault()
-    e.stopImmediatePropagation()
+    e.stopPropagation()
   })
 
   // add keyup addEventListener to image div (gallery window)
