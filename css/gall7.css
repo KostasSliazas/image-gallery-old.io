@@ -29,9 +29,8 @@ body {
   user-select: none;
   background: #000;
   color: #777;
-  height: 100%;
   position: fixed;
-  white-space: nowrap;
+  height: 100%;
   width: 100%;
   z-index: 99999999;
 }
