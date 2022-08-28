@@ -44,7 +44,6 @@
   IG.isActive = false
   IG.indexOfImage = 0
   IG.timeOut = 0
-  // IG.frag = d.createDocumentFragment()// all stuff for creating main gallery window
   IG.clos = element('button')
   IG.ilef = element('button')
   IG.irig = element('button')
@@ -57,7 +56,6 @@
   append(IG.rigt, IG.irig)
   append(IG.left, IG.ilef)
   append(IG.imag, IG.cent)
-  // a(IG.frag, IG.imag)
   IG.cent.id = 'cent7'
   IG.ilef.id = 'ilef7'
   IG.irig.id = 'irig7'
@@ -70,8 +68,6 @@
   atribute(IG.irig, 'aria-label', 'Next')
   atribute(IG.ilef, 'aria-label', 'Previous')
   atribute(IG.clos, 'aria-label', 'Close', 'title', 'Press Esc to close')
-  // IG.imag.setAttribute('tabindex', '-1')
-
   append(d.body, IG.imag)// append document fragment to <body>
 
   // autoplay method loop
@@ -111,7 +107,6 @@
   IG.lefts = function () {
     if (this.indexOfImage > 0) this.indexOfImage--
     else this.indexOfImage = this.imagesArray.length - 1
-    // this.ilef.focus()
     return this
   }
 
@@ -119,7 +114,6 @@
   IG.right = function () {
     if (this.indexOfImage < this.imagesArray.length - 1) this.indexOfImage++
     else this.indexOfImage = 0
-    // this.irig.focus()
     return this
   }
 
@@ -134,7 +128,7 @@
     return this
   }
 
-  // function on close
+  // method on close
   IG.close = function () {
     this.clear()
     this.isActive = false
@@ -234,10 +228,6 @@
     IG.alts = element('span')
     IG.fine = element('span')
     IG.down = element('span')
-    append(IG.onow, IG.alts, IG.wdow)
-    append(IG.imag, IG.onow, IG.foot)
-    append(IG.foot, IG.play, d.createTextNode(IG.imagesArray.length + '['), IG.fine, d.createTextNode(']'))
-    append(IG.wdow, IG.down)
     IG.alts.id = 'alts7'
     IG.play.id = 'play7'
     IG.foot.id = 'foot7'
@@ -245,6 +235,10 @@
     IG.down.id = 'down7'
     IG.wdow.id = 'wdow7'
     IG.fine.id = 'stat7'
+    append(IG.onow, IG.alts, IG.wdow)
+    append(IG.imag, IG.onow, IG.foot)
+    append(IG.foot, IG.play, d.createTextNode(IG.imagesArray.length + '['), IG.fine, d.createTextNode(']'))
+    append(IG.wdow, IG.down)
     atribute(IG.wdow, 'aria-label', 'Download')
     atribute(IG.play, 'aria-label', 'Play')
   }
