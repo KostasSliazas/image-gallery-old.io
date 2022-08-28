@@ -103,7 +103,7 @@ body {
 #insi7 img,
 #irig7 {
   top: 50%;
-  pointer-events: none;
+  z-index: -1;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%)
