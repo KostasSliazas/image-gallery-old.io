@@ -5,8 +5,7 @@
  * @param {...*} e
  */
   const append = function (e) {
-    const arrg = arguments
-    for (let i = 1; i < arrg.length; i++) e.appendChild(arrg[i])
+    for (let i = 1; i < arguments.length; i++) e.appendChild(arguments[i])
   }
 
   /**
@@ -14,8 +13,7 @@
  * @param {...*} e
  */
   const atribute = function (e) {
-    const arrg = arguments
-    for (let i = 1; i < arrg.length; i += 2) e.setAttribute(arrg[i], arrg[i + 1])
+    for (let i = 1; i < arguments.length; i += 2) e.setAttribute(arguments[i], arguments[i + 1])
   }
 
   /**
@@ -73,7 +71,7 @@
   // autoplay method loop
   IG.autoPlayLoop = function () {
     this.isAutoPlayOn = true
-    if (IG.showButtons) this.play.className = 'acts7'
+    if (this.showButtons) this.play.className = 'acts7'
 
     this.timeOut = setTimeout(function () {
       this.right().show()
@@ -120,7 +118,6 @@
   // clear method to reset all values
   IG.clear = function () {
     clearTimeout(this.timeOut)
-    this.timeOut = 0
     this.isAutoPlayOn = false
     if (this.showButtons) this.foot.className = this.onow.className = this.play.className = ''
     if (!this.showButtonsOnPlay) this.clos.className = ''
@@ -130,7 +127,6 @@
 
   // method on close
   IG.close = function () {
-    this.clear()
     this.isActive = false
     this.imag.className = 'hide7'
     d.documentElement.style.overflow = 'visible'// back to initial state of overflow
@@ -249,7 +245,7 @@
   const k = {
     'left7': function () { IG.clear().lefts().show() }, // eslint-disable-line
     'rigt7': function () { IG.clear().right().show() }, // eslint-disable-line
-    'clos7': function () { IG.close() }, // eslint-disable-line
+    'clos7': function () { IG.clear().close() }, // eslint-disable-line
     'wdow7': function () { IG.clear().downloads() }, // eslint-disable-line
     'play7': function () { IG.isAutoPlayOn ? IG.clear() : IG.autoPlayLoop() } // eslint-disable-line
   }
@@ -259,21 +255,14 @@
     k[' '] = k['play7'] // eslint-disable-line
     k['Escape'] = k['clos7'] // eslint-disable-line
 
-  // add click addEventListener to image div (gallery window)
-  IG.imag.addEventListener('click', function (e) {
-    if (!k[e.target.id]) return IG.isAutoPlayOn && IG.clear()
-    k[e.target.id]()
-    e.preventDefault()
-    e.stopPropagation()
-  })
-
-  // add keyup addEventListener to image div (gallery window)
-  w.addEventListener('keyup', function (e) {
-    if (!k[e.key] || !IG.isActive || e.isComposing || e.key === 229) return
-    k[e.key]()
+  const switcher = function (e) {
+    if (e.isComposing || e.key === 229) return
+    const event = e.target.id || e.key
+    if (!k[event]) return IG.clear()
+    k[event]()
     e.preventDefault()
     e.stopImmediatePropagation()
-  })
+  }
 
   // everything to handle swipe left/right
   // https://code-maven.com/swipe-left-right-vanilla-javascript
@@ -302,7 +291,9 @@
       else k['left7']() // eslint-disable-line
     }
   }
+  // event listeners
   IG.imag.addEventListener('touchstart', touchStart, { passive: true })
   IG.imag.addEventListener('touchend', touchEnd)
-  // everything to handle swipe left/right ends
+  IG.imag.addEventListener('click', function (e) { switcher(e) })
+  w.addEventListener('keyup', function (e) { switcher(e) })
 })(window, document)
