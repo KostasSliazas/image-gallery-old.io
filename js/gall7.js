@@ -5,7 +5,8 @@
  * @param {...*} e
  */
   const append = function (e) {
-    for (let i = 1; i < arguments.length; i++) e.appendChild(arguments[i])
+    const arrg = arguments
+    for (let i = 1; i < arrg.length; i++) e.appendChild(arrg[i])
   }
 
   /**
@@ -13,7 +14,8 @@
  * @param {...*} e
  */
   const atribute = function (e) {
-    for (let i = 1; i < arguments.length; i += 2) e.setAttribute(arguments[i], arguments[i + 1])
+    const arrg = arguments
+    for (let i = 1; i < arrg.length; i += 2) e.setAttribute(arrg[i], arrg[i + 1])
   }
 
   /**
@@ -75,6 +77,7 @@
 
     this.timeOut = setTimeout(function () {
       this.right().show()
+      // hide buttons if specified in config
       if (!this.showButtonsOnPlay) {
         this.left.className = this.rigt.className = this.clos.className = 'hide7'
         if (this.showButtons) this.foot.className = this.onow.className = 'hide7'
@@ -86,15 +89,15 @@
   // autoplay and image loaded helper to remove class 'loader'
   IG.loadComplete = function () {
     // remove class spin7 (loader)
-    this.insi.className = ''
+    if(this.imgs.complete && this.imgs.naturalHeight !== 0) this.insi.className = ''
     // if autoplay is set loop from images
     this.isAutoPlayOn && this.autoPlayLoop()
   }
 
   // downloads method
   IG.downloads = function () {
-    const a = element('a') // create link
-    // const fileName = this.imgs.src.split('/').pop()// add class active for button animation
+    // create link
+    const a = element('a') 
     // this.onow.dataset.selected = fileName
     atribute(a, 'rel', 'noreferrer', 'download', this.imgs.src.split('/').pop(), 'href', this.imgs.src, 'target', '_blank')
     a.click()
@@ -121,7 +124,7 @@
     this.isAutoPlayOn = false
     if (this.showButtons) this.foot.className = this.onow.className = this.play.className = ''
     if (!this.showButtonsOnPlay) this.clos.className = ''
-    // this.leftRigthBtnsShow()
+    this.leftRigthBtnsShow()
     return this
   }
 
@@ -133,36 +136,32 @@
   }
 
   // Left right buttons show/check method
-  // IG.leftRigthBtnsShow = function () {
-  //   this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
-  //   this.rigt.className = this.indexOfImage === this.imagesArray.length - 1 ? 'hide7' : ''
-  // }
+  IG.leftRigthBtnsShow = function () {
+    this.left.className = this.indexOfImage === 0 ? 'hide7' : ''
+    this.rigt.className = this.indexOfImage === this.imagesArray.length - 1 ? 'hide7' : ''
+  }
 
   // show image method to show image when loaded and recreating image element
   IG.show = function () {
     const index = this.imagesArray[this.indexOfImage]
-    const fullName = index.src
-    const fileName = fullName.split('/').pop()
-    const fullNamePrefixed = fileName.slice(0, -3) === 'svg' ? fullName : fullName.replace(fileName, this.folder + fileName)
-
+    const imageSource = index.src
+    const fileName = imageSource.split('/').pop()
+    const fullNamePrefixed = fileName.indexOf('.svg') > 0 ? imageSource : imageSource.replace(fileName, this.folder + fileName)
     // don't rewrite values if active and set active gallery
     if (!this.isActive) {
       this.isActive = true
-      d.documentElement.style.overflow = 'hidden'// hide scrollbar
+      document.documentElement.style.overflow = 'hidden'// hide scrollbar
       this.imag.className = ''
+      // if there is already image and src is same return and don't recreate
+      if (this.imgs && (this.imgs.src === imageSource || this.imgs.src === fullNamePrefixed)) return
     }
-
-    // if same src return
-    if (this.imgs && (this.imgs.src === fullName || this.imgs.src === fullNamePrefixed)) return
-
-    // add spin7 class on show
-    this.insi.className = 'spin7'
-
+    // add spin7 class when image src not matches
+    if (fullNamePrefixed !== imageSource) this.insi.className = 'spin7'
     // if image exist remove and later recreate it
     this.imgs && this.insi.removeChild(this.imgs)
 
     // show left right buttons and bottom information (file name and index)
-    // this.leftRigthBtnsShow()
+    this.leftRigthBtnsShow()
 
     // show index and filename
     if (this.showButtons) {
@@ -181,8 +180,9 @@
 
     // image onerror methods
     this.imgs.onerror = function (e) {
+      // throw new Error('Image error: ' + e.message)
       e.target.onerror = null // escape from infinite loop
-      e.target.src = fullName // set same img source
+      e.target.src = imageSource // set same img source
     }
 
     // image onload methods
@@ -243,23 +243,24 @@
 
   /** @suppress {missingProperties} */
   const k = {
+    'play7': function () { IG.isAutoPlayOn ? IG.clear() : IG.autoPlayLoop() }, // eslint-disable-line
     'left7': function () { IG.clear().lefts().show() }, // eslint-disable-line
     'rigt7': function () { IG.clear().right().show() }, // eslint-disable-line
     'clos7': function () { IG.clear().close() }, // eslint-disable-line
-    'wdow7': function () { IG.clear().downloads() }, // eslint-disable-line
-    'play7': function () { IG.isAutoPlayOn ? IG.clear() : IG.autoPlayLoop() } // eslint-disable-line
+    'wdow7': function () { IG.clear().downloads() } // eslint-disable-line
   }
-  /** @suppress {missingProperties} */
-    k['ArrowLeft'] = k['left7'] // eslint-disable-line
-    k['ArrowRight'] = k['rigt7'] // eslint-disable-line
-    k[' '] = k['play7'] // eslint-disable-line
-    k['Escape'] = k['clos7'] // eslint-disable-line
+  // add methods for arrow keys to k object
+  k[' '] = k['play7'] // eslint-disable-line
+  k['ArrowLeft'] = k['left7'] // eslint-disable-line
+  k['ArrowRight'] = k['rigt7'] // eslint-disable-line
+  k['Escape'] = k['clos7'] // eslint-disable-line
 
-  const switcher = function (e) {
-    if (e.isComposing || e.key === 229) return
-    const event = e.target.id || e.key
-    if (!k[event]) return IG.clear()
-    k[event]()
+  function switcher (e) {
+    if (!IG.isActive || e.isComposing || e.key === 229) return
+    // event key or target id
+    const ev = e.key || e.target.id
+    if (!k[ev]) return IG.clear()
+    k[ev]()
     e.preventDefault()
     e.stopImmediatePropagation()
   }
@@ -291,9 +292,10 @@
       else k['left7']() // eslint-disable-line
     }
   }
-  // event listeners
   IG.imag.addEventListener('touchstart', touchStart, { passive: true })
   IG.imag.addEventListener('touchend', touchEnd)
-  IG.imag.addEventListener('click', function (e) { switcher(e) })
-  w.addEventListener('keyup', function (e) { switcher(e) })
+  // add keyup addEventListener to image div (gallery window)
+  w.addEventListener('keyup', switcher)
+  // add click addEventListener to image div (gallery window)
+  IG.imag.addEventListener('click', switcher)
 })(window, document)

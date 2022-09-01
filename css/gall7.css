@@ -24,7 +24,6 @@ body {
 
 #imag7 {
   -moz-user-select: none;
-  -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
   background: #000;
@@ -257,6 +256,7 @@ body {
   height: 6px;
   width: 24px;
   z-index: -1;
+  pointer-events: none;
   border-top: 0
 }
 
