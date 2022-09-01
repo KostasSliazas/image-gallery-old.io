@@ -174,15 +174,15 @@ body {
 }
 
 #ilef7::after {
-  border-left: 2px solid #eee;
-  border-top: 2px solid #eee;
+  border-left: 2px solid #fff;
+  border-top: 2px solid #fff;
   left: 14px
 }
 
 #irig7::after {
   right: 14px;
-  border-right: 2px solid #eee;
-  border-top: 2px solid #eee
+  border-right: 2px solid #fff;
+  border-top: 2px solid #fff
 }
 
 #left7:hover #ilef7::after {
@@ -199,7 +199,7 @@ body {
 
 #clos7::after,
 #clos7::before {
-  border-left: 2px solid #eee;
+  border-left: 2px solid #fff;
   content: '';
   display: block;
   height: 30px;
@@ -246,7 +246,7 @@ body {
 
 #down7,
 #play7::before {
-  border: 2px solid #eee;
+  border: 2px solid #fff;
   left: 12px
 }
 
@@ -280,7 +280,7 @@ body {
 }
 
 #play7::after {
-  border-color: transparent #eee;
+  border-color: transparent #fff;
   border-style: solid;
   border-width: 5px 0 5px 12px;
   left: 19px;
@@ -294,8 +294,8 @@ body {
 }
 
 #down7::after {
-  border-bottom: 2px solid #eee;
-  border-left: 2px solid #eee;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
   bottom: 3px;
   height: 12px;
   left: 4px;
@@ -306,7 +306,7 @@ body {
 }
 
 #down7::before {
-  background: #eee;
+  background: #fff;
   height: 18px;
   left: 9px;
   top: -16px;
