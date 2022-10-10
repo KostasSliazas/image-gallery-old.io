@@ -12,7 +12,7 @@
   }
 }
 
-body {
+body, #imag7 * {
   margin: 0
 }
 
@@ -35,7 +35,6 @@ body {
   box-sizing: border-box;
   position: absolute;
   padding: 0;
-  margin: 0
 }
 
 #imag7 ::after,#imag7 ::before {
