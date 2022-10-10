@@ -1,19 +1,18 @@
 @-webkit-keyframes lo {
   to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg)
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg)
   }
 }
 
 @keyframes lo {
   to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg)
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg)
   }
 }
 
-html,
-body {
+body,html {
   height: 100%;
   margin: 0
 }
@@ -23,15 +22,13 @@ body {
 }
 
 #imag7 {
-  -moz-user-select: none;
-  -webkit-user-select: none;
   user-select: none;
   background: #000;
   color: #777;
   position: fixed;
   height: 100%;
   width: 100%;
-  z-index: 99999999;
+  z-index: 99999999
 }
 
 #imag7 * {
@@ -39,11 +36,16 @@ body {
   box-sizing: border-box;
   position: absolute;
   padding: 0;
-  margin: 0;
+  margin: 0
 }
 
-#foot7,
-#onow7 {
+#imag7 ::after,#imag7 ::before {
+  box-sizing: border-box;
+  content: "";
+  position: absolute
+}
+
+#foot7,#onow7 {
   text-indent: 50px;
   bottom: 24px;
   overflow: hidden
@@ -55,51 +57,34 @@ body {
   text-overflow: ellipsis
 }
 
-#insi7 img,
-#insi7,
-#alts7,
-#stat7 {
+#alts7,#insi7,#insi7 img,#stat7 {
   max-height: 100%;
   max-width: 100%;
-  position: relative;
+  position: relative
 }
 
-#clos7,
-#ilef7,
-#irig7,
-#play7,
-#wdow7 {
+#clos7,#ilef7,#irig7,#play7,#wdow7 {
   opacity: .7
 }
 
-#left7:hover,
-#rigt7:hover,
-#left7:hover button,
-#rigt7:hover button,
-#imag7 button:focus,
-#imag7 button:hover {
-  background: rgba(77, 77, 77, .2);
+#imag7 button:focus,#imag7 button:hover,#left7:hover,#left7:hover button,#rigt7:hover,#rigt7:hover button {
+  background: rgba(77,77,77,.2);
   outline: 0;
   opacity: 1;
   cursor: pointer
 }
 
-#imag7 button:active,
-#left7:active #ilef7,
-#rigt7:active #irig7 {
+#imag7 button:active,#left7:active #ilef7,#rigt7:active #irig7 {
   opacity: .3
 }
 
-#left7,
-#rigt7 {
+#left7,#rigt7 {
   width: 20%;
   min-width: 96px;
-  height: 100%;
+  height: 100%
 }
 
-#ilef7,
-#insi7 img,
-#irig7 {
+#ilef7,#insi7 img,#irig7 {
   top: 50%;
   z-index: -1;
   -webkit-transform: translateY(-50%);
@@ -112,25 +97,18 @@ body {
   width: 48px;
   border-radius: 50%;
   border: 0;
-  background: rgba(0, 0, 0, .2);
+  background: rgba(0,0,0,.2)
 }
 
-#clos7:after,
-#imag7,
-#left7,
-#rigt7,
-#wdow7 {
+#imag7,#left7,#rigt7,#wdow7 {
   top: 0
 }
 
-#imag7,
-#left7,
-#play7 {
+#imag7,#left7,#play7 {
   left: 0
 }
 
-#rigt7,
-#wdow7 {
+#rigt7,#wdow7 {
   right: 0
 }
 
@@ -138,36 +116,28 @@ body {
   top: 24px
 }
 
-#ilef7::after,
-#irig7::after {
-  content: '';
+#ilef7::after,#irig7::after {
   padding: 9px;
-  position: absolute;
   transition: .1s transform;
   top: 14px
 }
 
-#clos7,
-#irig7,
-#onow7 {
+#clos7,#irig7,#onow7 {
   right: 24px;
   text-align: right
 }
 
-#foot7,
-#ilef7 {
+#foot7,#ilef7 {
   left: 24px
 }
 
-#clos7:before,
-#irig7::after {
+#clos7:before,#irig7::after {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg)
 }
 
-#clos7:after,
-#ilef7::after {
+#clos7:after,#ilef7::after {
   -webkit-transform: rotate(-45deg);
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg)
@@ -197,14 +167,10 @@ body {
   transform: translateX(2px) rotate(45deg)
 }
 
-#clos7::after,
-#clos7::before {
+#clos7::after,#clos7::before {
   border-left: 2px solid #fff;
-  content: '';
-  display: block;
   height: 30px;
   left: 23px;
-  position: absolute;
   top: 10px;
   width: 0
 }
@@ -215,19 +181,17 @@ body {
   left: 0
 }
 
-#cent7,
-#insi7 {
+#cent7,#insi7 {
   height: 100%;
   margin: 0 auto;
-  text-align: center;
+  text-align: center
 }
 
 #insi7 img[src*=".svg"] {
   background: #fafafa
 }
 
-#play7::before,
-.spin7::after {
+#play7::before,.spin7::after {
   border-radius: 50%;
   height: 24px;
   width: 24px
@@ -240,12 +204,11 @@ body {
   border-bottom: 2px solid transparent;
   border-top: 2px solid transparent;
   left: 50%;
-  margin: -12px 0 0 -12px;
-  top: 50%;
+  margin: -12px 0 0-12px;
+  top: 50%
 }
 
-#down7,
-#play7::before {
+#down7,#play7::before {
   border: 2px solid #fff;
   left: 12px
 }
@@ -269,16 +232,6 @@ body {
   border-radius: 4px
 }
 
-#down7::after,
-#down7::before,
-#play7::after,
-#play7::before,
-.spin7::after {
-  box-sizing: border-box;
-  content: '';
-  position: absolute
-}
-
 #play7::after {
   border-color: transparent #fff;
   border-style: solid;
@@ -290,7 +243,7 @@ body {
 
 #play7.acts7::after {
   border-width: 0 2px;
-  padding-top: 10px;
+  padding-top: 10px
 }
 
 #down7::after {
