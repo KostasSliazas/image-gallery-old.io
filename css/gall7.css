@@ -12,8 +12,7 @@
   }
 }
 
-body,html {
-  height: 100%;
+body {
   margin: 0
 }
 
@@ -183,7 +182,7 @@ body,html {
 
 #cent7,#insi7 {
   height: 100%;
-  margin: 0 auto
+  text-align: center;
 }
 
 #insi7 img[src*=".svg"] {
