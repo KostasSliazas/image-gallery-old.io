@@ -12,10 +12,6 @@
   }
 }
 
-body, #imag7 * {
-  margin: 0
-}
-
 .hide7 {
   display: none
 }
@@ -35,6 +31,7 @@ body, #imag7 * {
   box-sizing: border-box;
   position: absolute;
   padding: 0;
+  margin: 0
 }
 
 #imag7 ::after,#imag7 ::before {
