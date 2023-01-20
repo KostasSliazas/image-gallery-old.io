@@ -34,7 +34,7 @@
   margin: 0
 }
 
-#imag7 ::after,#imag7 ::before {
+#imag7 button::after,#imag7 button::before, #imag7 span::after,#imag7 span::before {
   box-sizing: border-box;
   content: "";
   position: absolute
