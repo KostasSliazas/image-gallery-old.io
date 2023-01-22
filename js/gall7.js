@@ -61,29 +61,7 @@
   IG.left.id = 'left7'
   IG.imag.id = 'imag7'
   IG.imag.className = 'hide7'
-  // show download and autoplay buttons if (true = default)
-  if (IG.showButtons) {
-    IG.wdow = element('button')
-    IG.play = element('button')
-    IG.foot = element('div')
-    IG.onow = element('div')
-    IG.alts = element('span')
-    IG.fine = element('span')
-    IG.down = element('span')
-    IG.alts.id = 'alts7'
-    IG.play.id = 'play7'
-    IG.foot.id = 'foot7'
-    IG.onow.id = 'onow7'
-    IG.down.id = 'down7'
-    IG.wdow.id = 'wdow7'
-    IG.fine.id = 'stat7'
-    append(IG.onow, IG.alts, IG.wdow)
-    append(IG.imag, IG.onow, IG.foot)
-    append(IG.foot, IG.play, d.createTextNode(IG.imagesArray.length + '('), IG.fine, d.createTextNode(')'))
-    append(IG.wdow, IG.down)
-    atribute(IG.wdow, 'aria-label', 'Download')
-    atribute(IG.play, 'aria-label', 'Play')
-  }
+
   append(IG.cent, IG.insi, IG.rigt, IG.left, IG.clos)
   append(IG.rigt, IG.irig)
   append(IG.left, IG.ilef)
@@ -244,7 +222,29 @@
 
   if (containersArray[0] && containersArray[0].tagName === 'BODY') d.body.onclick = function (e) { IG.listenForIG(e) }
   else for (let k = containersArray.length - 1; k >= 0; k--) containersArray[k].onclick = function (e) { IG.listenForIG(e) }
-
+    // show download and autoplay buttons if (true = default)
+    if (IG.showButtons) {
+      IG.wdow = element('button')
+      IG.play = element('button')
+      IG.foot = element('div')
+      IG.onow = element('div')
+      IG.alts = element('span')
+      IG.fine = element('span')
+      IG.down = element('span')
+      IG.alts.id = 'alts7'
+      IG.play.id = 'play7'
+      IG.foot.id = 'foot7'
+      IG.onow.id = 'onow7'
+      IG.down.id = 'down7'
+      IG.wdow.id = 'wdow7'
+      IG.fine.id = 'stat7'
+      append(IG.onow, IG.alts, IG.wdow)
+      append(IG.imag, IG.onow, IG.foot)
+      append(IG.foot, IG.play, d.createTextNode(IG.imagesArray.length + '('), IG.fine, d.createTextNode(')'))
+      append(IG.wdow, IG.down)
+      atribute(IG.wdow, 'aria-label', 'Download')
+      atribute(IG.play, 'aria-label', 'Play')
+    }
     /** @suppress {missingProperties} */
   const k = {
     'play7': function () { IG.isAutoPlayOn ? IG.clear() : IG.autoPlayLoop() }, // eslint-disable-line
