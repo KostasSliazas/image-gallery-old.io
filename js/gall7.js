@@ -28,9 +28,9 @@
   const getConfig = typeof w['IGConfig'] !== 'undefined' && w['IGConfig'] // eslint-disable-line
 
   // add link CSS to head
-  const resource = element('link')
-  atribute(resource, 'rel', 'stylesheet', 'href', 'css/gall7.min.css')
-  append(d.getElementsByTagName('head')[0], resource)
+  // const resource = element('link')
+  // atribute(resource, 'rel', 'stylesheet', 'href', 'css/gall7.min.css')
+  // append(d.getElementsByTagName('head')[0], resource)
 
   // create object of image gallery
   const IG = {}
@@ -61,6 +61,29 @@
   IG.left.id = 'left7'
   IG.imag.id = 'imag7'
   IG.imag.className = 'hide7'
+  // show download and autoplay buttons if (true = default)
+  if (IG.showButtons) {
+    IG.wdow = element('button')
+    IG.play = element('button')
+    IG.foot = element('div')
+    IG.onow = element('div')
+    IG.alts = element('span')
+    IG.fine = element('span')
+    IG.down = element('span')
+    IG.alts.id = 'alts7'
+    IG.play.id = 'play7'
+    IG.foot.id = 'foot7'
+    IG.onow.id = 'onow7'
+    IG.down.id = 'down7'
+    IG.wdow.id = 'wdow7'
+    IG.fine.id = 'stat7'
+    append(IG.onow, IG.alts, IG.wdow)
+    append(IG.imag, IG.onow, IG.foot)
+    append(IG.foot, IG.play, d.createTextNode(IG.imagesArray.length + '('), IG.fine, d.createTextNode(')'))
+    append(IG.wdow, IG.down)
+    atribute(IG.wdow, 'aria-label', 'Download')
+    atribute(IG.play, 'aria-label', 'Play')
+  }
   append(IG.cent, IG.insi, IG.rigt, IG.left, IG.clos)
   append(IG.rigt, IG.irig)
   append(IG.left, IG.ilef)
@@ -89,7 +112,8 @@
   // autoplay and image loaded helper to remove class 'loader'
   IG.loadComplete = function () {
     // remove class spin7 (loader)
-    if(this.imgs.complete && this.imgs.naturalHeight !== 0) this.insi.className = ''
+    //if(this.imgs.complete && this.imgs.naturalHeight !== 0) 
+    this.insi.className = ''
     // if autoplay is set loop from images
     this.isAutoPlayOn && this.autoPlayLoop()
   }
@@ -99,7 +123,7 @@
     // create link
     const a = element('a') 
     // this.onow.dataset.selected = fileName
-    atribute(a, 'rel', 'noreferrer', 'download', this.imgs.src.split('/').pop(), 'href', this.imgs.src, 'target', '_blank')
+    atribute(a, 'rel', 'noopener', 'download', this.imgs.src.split('/').pop(), 'href', this.imgs.src, 'target', '_blank')
     a.click()
     a.remove()
   }
@@ -123,15 +147,15 @@
     clearTimeout(this.timeOut)
     this.isAutoPlayOn = false
     if (this.showButtons) this.foot.className = this.onow.className = this.play.className = ''
-    if (!this.showButtonsOnPlay) this.clos.className = ''
+    if(!this.showButtonsOnPlay) this.clos.className = ''
     this.leftRigthBtnsShow()
     return this
   }
 
   // method on close
   IG.close = function () {
-    this.isActive = false
     this.imag.className = 'hide7'
+    this.isActive = false
     d.documentElement.style.overflow = 'visible'// back to initial state of overflow
   }
 
@@ -147,19 +171,21 @@
     const imageSource = index.src
     const fileName = imageSource.split('/').pop()
     const fullNamePrefixed = fileName.indexOf('.svg') > 0 ? imageSource : imageSource.replace(fileName, this.folder + fileName)
+    
     // don't rewrite values if active and set active gallery
     if (!this.isActive) {
       this.isActive = true
       document.documentElement.style.overflow = 'hidden'// hide scrollbar
       this.imag.className = ''
-      // if there is already image and src is same return and don't recreate
-      if (this.imgs && (this.imgs.src === imageSource || this.imgs.src === fullNamePrefixed)) return
     }
-    // add spin7 class when image src not matches
-    if (fullNamePrefixed !== imageSource) this.insi.className = 'spin7'
+    
+    // if there is already image and src is same return and don't recreate
+    if (this.imgs && (this.imgs.src === imageSource || this.imgs.src === fullNamePrefixed)) return false
+     
     // if image exist remove and later recreate it
     this.imgs && this.insi.removeChild(this.imgs)
-
+    // add spin7 class when loading image src
+    this.insi.className = 'spin7'
     // show left right buttons and bottom information (file name and index)
     this.leftRigthBtnsShow()
 
@@ -171,23 +197,23 @@
 
     // create new image element
     this.imgs = element('img')
-
     // set image alt attribute
     atribute(this.imgs, 'alt', index.alt)
-
-    // append image to div
-    append(this.insi, this.imgs)
-
+    
     // image onerror methods
     this.imgs.onerror = function (e) {
       // throw new Error('Image error: ' + e.message)
       e.target.onerror = null // escape from infinite loop
       e.target.src = imageSource // set same img source
     }
-
+    
     // image onload methods
-    this.imgs.onload = this.loadComplete.bind(this)
+    this.imgs.onload = function (e) {
+      this.loadComplete()
+    }.bind(this)
 
+    // append image to div
+    append(this.insi, this.imgs)
     // set image src if svg return full name else try to load big image
     this.imgs.src = fullNamePrefixed
   }
@@ -215,33 +241,11 @@
     const img = containersArray[i].getElementsByTagName('img')
     for (let j = 0; j < img.length; j++) IG.imagesArray.push(img[j])
   }
-  // show download and autoplay buttons if (true = default)
-  if (IG.showButtons) {
-    IG.wdow = element('button')
-    IG.play = element('button')
-    IG.foot = element('div')
-    IG.onow = element('div')
-    IG.alts = element('span')
-    IG.fine = element('span')
-    IG.down = element('span')
-    IG.alts.id = 'alts7'
-    IG.play.id = 'play7'
-    IG.foot.id = 'foot7'
-    IG.onow.id = 'onow7'
-    IG.down.id = 'down7'
-    IG.wdow.id = 'wdow7'
-    IG.fine.id = 'stat7'
-    append(IG.onow, IG.alts, IG.wdow)
-    append(IG.imag, IG.onow, IG.foot)
-    append(IG.foot, IG.play, d.createTextNode(IG.imagesArray.length + '['), IG.fine, d.createTextNode(']'))
-    append(IG.wdow, IG.down)
-    atribute(IG.wdow, 'aria-label', 'Download')
-    atribute(IG.play, 'aria-label', 'Play')
-  }
-  if (containersArray[0] && containersArray[0].tagName === 'BODY') d.body.addEventListener('click', function (e) { IG.listenForIG(e) })
-  else for (let k = containersArray.length - 1; k >= 0; k--) containersArray[k].addEventListener('click', function (e) { IG.listenForIG(e) })
 
-  /** @suppress {missingProperties} */
+  if (containersArray[0] && containersArray[0].tagName === 'BODY') d.body.onclick = function (e) { IG.listenForIG(e) }
+  else for (let k = containersArray.length - 1; k >= 0; k--) containersArray[k].onclick = function (e) { IG.listenForIG(e) }
+
+    /** @suppress {missingProperties} */
   const k = {
     'play7': function () { IG.isAutoPlayOn ? IG.clear() : IG.autoPlayLoop() }, // eslint-disable-line
     'left7': function () { IG.clear().lefts().show() }, // eslint-disable-line
@@ -267,9 +271,7 @@
 
   // everything to handle swipe left/right
   // https://code-maven.com/swipe-left-right-vanilla-javascript
-  const minHorizontalMove = 30
-  const maxVerticalMove = 30
-  const withinMs = 1000
+
   let startXPos
   let startYPos
   let startTime
@@ -287,7 +289,7 @@
     const moveX = endXPos - startXPos
     const moveY = endYPos - startYPos
     const elapsedTime = endTime - startTime
-    if (Math.abs(moveX) > minHorizontalMove && Math.abs(moveY) < maxVerticalMove && elapsedTime < withinMs) {
+    if (Math.abs(moveX) > 30 && Math.abs(moveY) < 30 && elapsedTime < 1000) {
       if (moveX < 0) k['rigt7']() // eslint-disable-line
       else k['left7']() // eslint-disable-line
     }
@@ -297,5 +299,5 @@
   // add keyup addEventListener to image div (gallery window)
   w.addEventListener('keyup', switcher)
   // add click addEventListener to image div (gallery window)
-  IG.imag.addEventListener('click', switcher)
+  IG.imag.onclick = switcher
 })(window, document)
