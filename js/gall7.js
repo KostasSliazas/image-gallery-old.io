@@ -1,5 +1,6 @@
 (function (w, d) {
   'use strict'
+  d.addEventListener('DOMContentLoaded', function () {
   /**
  * Function appendChild helper
  * @param {...*} e
@@ -298,6 +299,7 @@
   IG.imag.addEventListener('touchend', touchEnd)
   // add keyup addEventListener to image div (gallery window)
   w.addEventListener('keyup', switcher)
-  // add click addEventListener to image div (gallery window)
+  // add click onclick event to image div (gallery window)
   IG.imag.onclick = switcher
+  })
 })(window, document)
