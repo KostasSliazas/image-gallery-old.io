@@ -223,7 +223,7 @@
   width: 24px
 }
 
-.spin7::after {
+#insi7.spin7::after {
   content: "";
   -webkit-animation: lo .3s linear infinite;
   animation: lo .3s linear infinite;
