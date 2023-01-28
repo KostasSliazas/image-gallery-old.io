@@ -3,3 +3,5 @@
 
 - [x] JAVASCRIPT (VANILLA)
 - [x] BUTTONS (LEFT, RIGHT, DOWNLOAD, AUTO PLAY)
+
+<a href="https://www.paypal.com/donate/?hosted_button_id=7KH4VV5GJR2BJ" rel="noopener" target="_blank">Donate via Paypal</a>
