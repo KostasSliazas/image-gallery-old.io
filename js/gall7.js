@@ -35,8 +35,8 @@
 
   // create object of image gallery
   const IG = {}
-  IG.folder = getConfig['folder'] || 'big/' // eslint-disable-line
-  IG.imageContainer = getConfig['imageContainer'] || 'images-container' // eslint-disable-line
+  IG.folder = getConfig['folder'] || 'x/' // eslint-disable-line
+  IG.imageContainer = getConfig['imageContainer'] || 'gall7' // eslint-disable-line
   IG.timer = isFinite(getConfig['delaySeconds']) ? getConfig['delaySeconds'] * 1000 : 1700 // eslint-disable-line
   IG.showButtonsOnPlay = typeof getConfig['showButtonsOnPlay'] === 'undefined' ? true : !!getConfig['showButtonsOnPlay'] // eslint-disable-line
   IG.showButtons = typeof getConfig['showButtons'] === 'undefined' ? true : !!getConfig['showButtons'] // eslint-disable-line
@@ -157,7 +157,11 @@
       document.documentElement.style.overflow = 'hidden'// hide scrollbar
       this.imag.className = ''
     }
-    
+    // show index and filename
+    if (this.showButtons) {
+      this.alts.innerText = decodeURI(fileName)
+      this.fine.innerText = Number(this.indexOfImage) + 1
+    }
     // if there is already image and src is same return and don't recreate
     if (this.imgs && (this.imgs.src === imageSource || this.imgs.src === fullNamePrefixed)) return false
      
@@ -168,11 +172,7 @@
     // show left right buttons and bottom information (file name and index)
     this.leftRigthBtnsShow()
 
-    // show index and filename
-    if (this.showButtons) {
-      this.alts.innerText = decodeURI(fileName)
-      this.fine.innerText = Number(this.indexOfImage) + 1
-    }
+
 
     // create new image element
     this.imgs = element('img')
@@ -220,7 +220,7 @@
     const img = containersArray[i].getElementsByTagName('img')
     for (let j = 0; j < img.length; j++) IG.imagesArray.push(img[j])
   }
-
+  console.log(IG.imagesArray)
   if (containersArray[0] && containersArray[0].tagName === 'BODY') d.body.onclick = function (e) { IG.listenForIG(e) }
   else for (let k = containersArray.length - 1; k >= 0; k--) containersArray[k].onclick = function (e) { IG.listenForIG(e) }
     // show download and autoplay buttons if (true = default)
