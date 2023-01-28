@@ -28,6 +28,15 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
   <script defer src="js/gall7.min.js"></script>
+  <script>
+    window.IGConfig = {    
+    delaySeconds: .5,    
+    showButtons: 1,
+    imageContainer: 'images-container',    
+    showButtonsOnPlay: 0,    
+    folder: 'big/', // string + "/" === folder    
+    }    
+  </script>
 </head>
 
 <body>
@@ -56,8 +65,8 @@
           <p class="code__p">delaySeconds<i class="code__i--el">:</i> 2<i class="code__i--el">,</i></p>
           <p class="code__p">showButtons<i class="code__i--el">:</i> 1<i class="code__i--el">,</i></p>
           <p class="code__p">showButtonsOnPlay<i class="code__i--el">:</i> 1<i class="code__i--el">,</i></p>
-          <p class="code__p">imageContainer<i class="code__i--el">:</i> 'images-container'<i class="code__i--el">,</i></p>
-          <p class="code__p">folder<i class="code__i--el">:</i> 'big/', <i class="code__i--co">// string + "/" === folder</i></p>
+          <p class="code__p">imageContainer<i class="code__i--el">:</i> 'gall7'<i class="code__i--el">,</i></p>
+          <p class="code__p">folder<i class="code__i--el">:</i> 'x/', <i class="code__i--co">// string + "/" === folder</i></p>
           <p class="code__p">}</p>
           <p class="code__p"><i class="code__i--re">&lt;/</i>script<i class="code__i--re">&gt;</i></p>
         </div>
@@ -82,10 +91,17 @@
       <p><b class="code__i--re">showButtonsOnPlay: </b><b><i>show buttons on autoplay</i></b></p>
     </div>
   </div>
+  <img src="photos/big/image7.jpg" loading="lazy" alt="image gallery5" title="I'm not in container">
   </main>
   <footer>
     Image gallery JavaScript 2020
   </footer>
+
+
+
+
+
+
 </body>
 
 </html>
