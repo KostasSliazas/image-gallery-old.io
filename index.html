@@ -19,8 +19,6 @@
   <link rel="canonical" href="https://kostassliazas.github.io/image-gallery.io/">
   <link rel="preload" href="css/listimg.min.css" as="style">
   <link rel="preload" href="css/style-page.min.css" as="style">
-  <link rel="preload" href="css/gall7.min.css" as="style">
-  <link rel="stylesheet" href="css/gall7.min.css">
   <link rel="stylesheet" href="css/listimg.min.css">
   <link rel="stylesheet" href="css/style-page.min.css">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -30,11 +28,10 @@
   <script defer src="js/gall7.min.js"></script>
   <script>
     window.IGConfig = {    
-    delaySeconds: .5,    
-    showButtons: 1,
-    imageContainer: 'images-container',    
+    delaySeconds: .7,
+    imageContainer: 'images',    
     showButtonsOnPlay: 0,    
-    folder: 'big/', // string + "/" === folder    
+    folder: 'big/'
     }    
   </script>
 </head>
@@ -49,11 +46,10 @@
         <a href="https://github.com/KostasSliazas/image-gallery.io" target="_blank" rel="noreferrer">https://github.com/KostasSliazas/image-gallery.io</a>
       </div>
     </header>
-    <div class="wrap">
+    <div class="wrap images">
       <div>
         <div class="code">
-          <p class="code__p noselect">&lt;!--Copy/Paste(ctrl+a/ctrl+c/ctrl+v)to &lt;head&gt; tag--&gt;</p>
-          <p class="code__p"><i class="code__i--re">&lt;</i>link <i class="code__i--sc">rel</i><i class="code__i--re">=</i>"stylesheet" <i class="code__i--sc">href</i><i class="code__i--re">=</i>"css/gall7.min.css"<i class="code__i--re">&gt;</i></p>
+          <p class="code__p noselect">&lt;!--Copy/Paste(ctrl+a/ctrl+c/ctrl+v)--&gt;</p>
           <p class="code__p"><i class="code__i--re">&lt;</i>script <i class="code__i--sc">defer</i> <i class="code__i--sc">src</i><i class="code__i--re">=</i>"js/gall7.min.js"<i class="code__i--re">&gt;</i><i class="code__i--re">&lt;/</i>script<i class="code__i--re">&gt;</i></p>
         </div>
       </div>
@@ -72,7 +68,7 @@
         </div>
       </div>
     </div>
-    <div class="images-container">
+    <div class="images-container images">
       <ul>
         <li><img src="photos/image1.jpg" loading="lazy" alt="image gallery2"></li>
         <li><img src="photos/image2.jpg" loading="lazy" alt="image gallery2"></li>
@@ -94,14 +90,7 @@
   <img src="photos/big/image7.jpg" loading="lazy" alt="image gallery5" title="I'm not in container">
   </main>
   <footer>
-    Image gallery JavaScript 2020
+    Image gallery JavaScript
   </footer>
-
-
-
-
-
-
 </body>
-
 </html>

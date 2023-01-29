@@ -1,6 +1,5 @@
 (function (w, d) {
   'use strict'
-  d.addEventListener('DOMContentLoaded', function () {
   /**
  * Function appendChild helper
  * @param {...*} e
@@ -28,10 +27,10 @@
   // get config from window.IGConfig
   const getConfig = typeof w['IGConfig'] !== 'undefined' && w['IGConfig'] // eslint-disable-line
 
-  // add link CSS to head
-  // const resource = element('link')
-  // atribute(resource, 'rel', 'stylesheet', 'href', 'css/gall7.min.css')
-  // append(d.getElementsByTagName('head')[0], resource)
+  //add link CSS to head
+  const resource = element('link')
+  atribute(resource, 'rel', 'stylesheet', 'href', 'css/gall7.min.css')
+  append(d.getElementsByTagName('head')[0], resource)
 
   // create object of image gallery
   const IG = {}
@@ -67,8 +66,8 @@
   append(IG.rigt, IG.irig)
   append(IG.left, IG.ilef)
   append(IG.imag, IG.cent)
-  atribute(IG.irig, 'aria-label', 'Next')
-  atribute(IG.ilef, 'aria-label', 'Previous')
+  // atribute(IG.irig, 'aria-label', 'Next')
+  // atribute(IG.ilef, 'aria-label', 'Previous')
   atribute(IG.clos, 'aria-label', 'Close', 'title', 'Press Esc to close')
   append(d.body, IG.imag)// append document fragment to <body>
 
@@ -175,9 +174,17 @@
 
 
     // create new image element
-    this.imgs = element('img')
+    if (fileName.indexOf('.svg') > 0) {
+      this.imgs = index.cloneNode()    
+      this.imgs.removeAttribute('id')
+      this.imgs.removeAttribute('class')
+    }
+
+    else this.imgs = element('img')
+
+
     // set image alt attribute
-    atribute(this.imgs, 'alt', index.alt)
+    // atribute(this.imgs, 'alt', index.alt)
     
     // image onerror methods
     this.imgs.onerror = function (e) {
@@ -220,10 +227,10 @@
     const img = containersArray[i].getElementsByTagName('img')
     for (let j = 0; j < img.length; j++) IG.imagesArray.push(img[j])
   }
-  console.log(IG.imagesArray)
   if (containersArray[0] && containersArray[0].tagName === 'BODY') d.body.onclick = function (e) { IG.listenForIG(e) }
   else for (let k = containersArray.length - 1; k >= 0; k--) containersArray[k].onclick = function (e) { IG.listenForIG(e) }
-    // show download and autoplay buttons if (true = default)
+
+  // show download and autoplay buttons if (true = default)
     if (IG.showButtons) {
       IG.wdow = element('button')
       IG.play = element('button')
@@ -243,9 +250,10 @@
       append(IG.imag, IG.onow, IG.foot)
       append(IG.foot, IG.play, d.createTextNode(IG.imagesArray.length + '('), IG.fine, d.createTextNode(')'))
       append(IG.wdow, IG.down)
-      atribute(IG.wdow, 'aria-label', 'Download')
-      atribute(IG.play, 'aria-label', 'Play')
+      // atribute(IG.wdow, 'aria-label', 'Download')
+      // atribute(IG.play, 'aria-label', 'Play')
     }
+
     /** @suppress {missingProperties} */
   const k = {
     'play7': function () { IG.isAutoPlayOn ? IG.clear() : IG.autoPlayLoop() }, // eslint-disable-line
@@ -301,5 +309,4 @@
   w.addEventListener('keyup', switcher)
   // add click onclick event to image div (gallery window)
   IG.imag.onclick = switcher
-  })
 })(window, document)
