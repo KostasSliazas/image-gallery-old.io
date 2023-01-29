@@ -25,15 +25,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <script defer src="js/gall7.min.js"></script>
-  <script>
-    IGConfig = {
-    delaySeconds: .7,
-    imageContainer: 'images',    
-    showButtonsOnPlay: 0,    
-    folder: 'big/'
-    }    
-  </script>
 </head>
 
 <body>
@@ -63,6 +54,7 @@
           <p class="code__p">showButtonsOnPlay<i class="code__i--el">:</i> 1<i class="code__i--el">,</i></p>
           <p class="code__p">imageContainer<i class="code__i--el">:</i> 'gall7'<i class="code__i--el">,</i></p>
           <p class="code__p">folder<i class="code__i--el">:</i> 'x/', <i class="code__i--co">// string + "/" === folder</i></p>
+          <p class="code__p">extension<i class="code__i--el">:</i> '' <i class="code__i--co">// for bigger resolution</i></p>
           <p class="code__p">}</p>
           <p class="code__p"><i class="code__i--re">&lt;/</i>script<i class="code__i--re">&gt;</i></p>
         </div>
@@ -90,8 +82,17 @@
   </main>
   <footer>
     <h3>Download JavaScript file and add to HTML</h3>
-    <p class="code__i--el">JavaScript + CSS = <b>~8.1 KB</b></p>
+    <p class="code__i--el">JavaScript + CSS = <b>~8 KB</b></p>
     Image gallery JavaScript 2020
   </footer>
+  <script defer src="js/gall7.js"></script>
+  <script>
+    window.IGConfig = {
+    delaySeconds: .7,
+    imageContainer: 'images',
+    showButtonsOnPlay: 0,
+    folder: 'big/'
+    }
+  </script>
 </body>
 </html>
