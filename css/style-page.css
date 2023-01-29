@@ -62,8 +62,8 @@ h3 {
   counter-reset: counter;
   color: var(--blue-light);
   letter-spacing: .5px;
-  overflow: auto;
-  max-height: 96px;
+  overflow: scroll;
+  max-height: 3em;
   text-align: left;
   box-shadow: 0 0 0 1px var(--secondary-2-4) inset;
   background: #fafafa;
